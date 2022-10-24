@@ -1,5 +1,7 @@
 import tkinter as tk
+from cgitb import text
 
+from dictionary import place_ship
 from shoot import schuss
 
 
@@ -26,12 +28,34 @@ class GameBoard(tk.Frame):
         canvas_height = rows * size
 
         tk.Frame.__init__(self, parent)
+        #create field and buttons
         self.label = tk.Label(self, text="0")
         self.label.pack(side="right")
-        self.button_place=tk.Button(self,text="Place", command=place)
+        self.button_place=tk.Button(self,text="Place", command=place_ship)
         self.button_place.pack(anchor="ne")
-        self.button = tk.Button(self, text="shot", command=schuss)
-        self.button.pack(side="right")
+        #create entrys to get numbers of ships to place
+        self.length1 = tk.Entry(self, textvariable=text)
+        self.label_leng1 = tk.Label(self, text="Length one:")
+        self.label_leng1.grid(column=1,row=0)
+        self.length1.pack(anchor="ne")
+        self.ships_with_lengt_one = self.length1.get()
+        self.length2 = tk.Entry(self, textvariable=text)
+        self.label_leng2 = tk.Label(self, text="Length two:")
+        self.label_leng2.grid(column=1,row=0)
+        self.length2.pack(anchor="ne")
+        self.ships_with_lengt_two = self.length2.get()
+        self.length3 = tk.Entry(self, textvariable=text)
+        self.label_leng3 = tk.Label(self, text="Length three:")
+        self.label_leng3.grid(column=1,row=0)
+        self.length3.pack(anchor="ne")
+        self.ships_with_lengt_three = self.length3.get()
+        self.length4 = tk.Entry(self, textvariable=text)
+        self.label_leng4 = tk.Label(self, text="Length four:")
+        self.label_leng4.grid(column=1,row=0)
+        self.length4.pack(anchor="ne")
+        self.ships_with_lengt_four = self.length4.get()
+        #self.button = tk.Button(self, text="shot", command=schuss(place_ship, board.counter))
+        #self.button.pack(side="right") #still not useable
         self.canvas = tk.Canvas(
             self,
             borderwidth=0,
@@ -71,6 +95,6 @@ class GameBoard(tk.Frame):
 if __name__ == "__main__":
     root = tk.Tk()
     board = GameBoard(root)
-    board.counter = 0
+    board.counter = 0 #for counting the shots
     board.pack(side="top", fill="both", expand="true", padx=4, pady=4)
     root.mainloop()
