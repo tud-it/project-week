@@ -35,11 +35,13 @@ class GameBoard(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.label = tk.Label(self,text="0")
         self.label.pack(side="right")
+        self.button_place=tk.Button(self,text="Place", command=place)
+        self.button_place.pack(anchor="ne")
         self.button = tk.Button(self,text="shot", command=shuss)
         self.button.pack(side="right")
         self.canvas = tk.Canvas(self, borderwidth=0, highlightthickness=0,
-                                width=canvas_width, height=canvas_height, background="bisque")
-        self.canvas.pack(side="top", fill=tk.BOTH , expand=True, padx=2, pady=2)
+                                width=canvas_width, height=canvas_height)
+        self.canvas.pack(side="top", fill="both" , expand=True, padx=2, pady=2)
 
         # this binding will cause a refresh if the user interactively
         # changes the window size
@@ -66,14 +68,11 @@ class GameBoard(tk.Frame):
         self.canvas.tag_raise("piece")
         self.canvas.tag_lower("square")
 
-
-# image comes from the silk icon set which is under a Creative Commons
-# license. For more information see http://www.famfamfam.com/lab/icons/silk/
-
 def shuss():
     board.counter+=1
     board.label['text'] = 'Counter: ' + str(board.counter)
-
+def place():
+    board.button_place()
 if __name__ == "__main__":
     root = tk.Tk()
     board = GameBoard(root)
