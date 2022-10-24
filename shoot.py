@@ -5,18 +5,18 @@ import random
 from dictionary import board
 
 
-def schuss(dict, count: int):
+def schuss(dic: dict, count: int):
     """function to shoot a boat"""
     field_list = list(board.keys())
     field = random.choice(field_list)
 
     # empty list to store already shot field
-    already_shot = list()
+    already_shot: list = []
 
     if field in already_shot:
-        schuss(count)
-    if dict.key(field):
-        hit = dict.key(field) = False
+        schuss(dic, count)
+    if dic.get(field):
+        hit = dic[field] = False
         count += 1
         return hit, count
     return print("Nicht Getroffen!")
