@@ -42,7 +42,4 @@ def change_board(zelle):
 
 
 def test_space(zelle):
-    if zelle in board and not board.get(zelle):
-        return True
-    else:
-        return False
+    return zelle in board and not board.get(zelle)
