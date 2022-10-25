@@ -4,11 +4,12 @@ import random
 from time import sleep
 
 from dictionary import create_board, place_ship
-from schiff import Schiff, SPIELFELDGRÖSSE
+from schiff import SPIELFELDGRÖSSE, Schiff
 
 
 def get_random_field():
-    field_list = list(create_board().keys())
+    board = create_board(SPIELFELDGRÖSSE)
+    field_list = list(board.keys())
     field = random.choice(field_list)
     return field
 
@@ -47,6 +48,8 @@ def set_ships(frequency: int, lenght: int):
             place_ship(Schiff(start_point, end_point), playing_board)
 
     return playing_board
+
+
 
 def player_move(schiff: Schiff):
     # wait for player move
