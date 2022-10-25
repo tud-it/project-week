@@ -7,7 +7,7 @@ def create_board(groesse):
     brd = {}
     for i in range(groesse):
         for j in range(groesse):
-            brd[(num_to_alphabet(i), j)] = False
+            brd[(num_to_letter(i), j)] = False
     return brd
 
 
@@ -34,8 +34,8 @@ def place_ship(new_ship: Schiff, board: dict):
             for i in range(leng):
                 board[(zeile, start + i)] = True
             return board
-        else:
-            return False
+
+        return False
     # setzen vertikales Schiff
     if new_ship.first.VERT == new_ship.last.VERT:
         spalte = new_ship.first.VERT
@@ -60,16 +60,26 @@ def test_space(zelle, board: dict):
     return zelle in board and not board.get(zelle)
 
 
-def num_to_alphabet(num: int):
+def num_to_letter(num: int):
     if num < 26:
         buchstabe = chr(num + 65)
         return buchstabe
-    else:
-        buchstabe1 = num_to_alphabet(int(num / 26))
-        num -= 26 * int(num / 26)
-        buchstabe2 = num_to_alphabet(num)
-        buchstaben = buchstabe1 + buchstabe2
-        return buchstaben
+
+    buchstabe1 = num_to_letter(int(num / 26) - 1)
+    num -= 26 * int(num / 26)
+    buchstabe2 = num_to_letter(num)
+    buchstaben = buchstabe1 + buchstabe2
+    return buchstaben
 
 
-#print(num_to_alphabet(500))
+def letter_to_num(buchstaben: str):
+    i = 0
+    zahl = 0
+    for buchstabe in reversed(buchstaben):
+        zahl += (ord(buchstabe) - 64) * 26**i
+        i += 1
+    return zahl - 1
+
+
+# print(letter_to_num("SG"))
+# print(num_to_letter(500))
