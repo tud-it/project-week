@@ -31,28 +31,30 @@ class GameBoard(tk.Frame):
         #create field and buttons
         self.label = tk.Label(self, text="0")
         self.label.pack(side="right")
+        self.button_shoot=tk.Button(self,text="shoot",command=shoot)
+        self.button_shoot.pack(anchor="e")
         self.button_place=tk.Button(self,text="Place", command=place_ship)
         self.button_place.pack(anchor="ne")
         #create entrys to get numbers of ships to place
         self.length1 = tk.Entry(self, textvariable=text)
         self.label_leng1 = tk.Label(self, text="Length one:")
-        self.label_leng1.grid(column=1,row=0)
-        self.length1.pack(anchor="ne")
+        self.label_leng1.pack(anchor="n")
+        self.length1.pack(anchor="n")
         self.ships_with_lengt_one = self.length1.get()
         self.length2 = tk.Entry(self, textvariable=text)
         self.label_leng2 = tk.Label(self, text="Length two:")
-        self.label_leng2.grid(column=1,row=0)
-        self.length2.pack(anchor="ne")
+        self.label_leng2.pack(anchor="n")
+        self.length2.pack(anchor="n")
         self.ships_with_lengt_two = self.length2.get()
         self.length3 = tk.Entry(self, textvariable=text)
         self.label_leng3 = tk.Label(self, text="Length three:")
-        self.label_leng3.grid(column=1,row=0)
-        self.length3.pack(anchor="ne")
+        self.label_leng3.pack(anchor="n")
+        self.length3.pack(anchor="n")
         self.ships_with_lengt_three = self.length3.get()
         self.length4 = tk.Entry(self, textvariable=text)
         self.label_leng4 = tk.Label(self, text="Length four:")
-        self.label_leng4.grid(column=1,row=0)
-        self.length4.pack(anchor="ne")
+        self.label_leng4.pack(anchor="n")
+        self.length4.pack(anchor="n")
         self.ships_with_lengt_four = self.length4.get()
         #self.button = tk.Button(self, text="shot", command=schuss(place_ship, board.counter))
         #self.button.pack(side="right") #still not useable
@@ -91,7 +93,10 @@ class GameBoard(tk.Frame):
         self.canvas.tag_raise("piece")
         self.canvas.tag_lower("square")
 
-
+def shoot():
+    board.counter+=1
+    label=board.label
+    label['text']= board.counter
 if __name__ == "__main__":
     root = tk.Tk()
     board = GameBoard(root)
