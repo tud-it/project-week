@@ -1,9 +1,9 @@
 import tkinter as tk
 from cgitb import text
 
-from dictionary import place_ship,brett,create_board
+from dictionary import create_board
 from schiff import Schiff
-from shoot import schuss
+from shoot import schuss, set_ships
 
 
 class GameBoard(tk.Frame):
@@ -32,9 +32,9 @@ class GameBoard(tk.Frame):
         #create field and buttons
         self.label = tk.Label(self, text="0")
         self.label.pack(side="right")
-        self.button_shoot=tk.Button(self,text="shoot",command=schuss())
+        self.button_shoot=tk.Button(self,text="shoot",command=schuss(create_board,0))
         self.button_shoot.pack(anchor="e")
-        self.button_place=tk.Button(self,text="Place", command=place_ship(Schiff(),brett))
+        self.button_place=tk.Button(self,text="Place", command=set_ships(Schiff(),create_board))
         self.button_place.pack(anchor="ne")
         #create entrys to get numbers of ships to place
         self.length1 = tk.Entry(self, textvariable=text)
