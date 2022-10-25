@@ -3,12 +3,12 @@
 import random
 from time import sleep
 
-from dictionary import board, create_board, place_ship
+from dictionary import brett, create_board, place_ship
 from schiff import Schiff
 
 
 def get_random_field():
-    field_list = list(board.keys())
+    field_list = list(brett.keys())
     field = random.choice(field_list)
     return field
 
@@ -46,11 +46,11 @@ def set_ships(frequency: int, lenght: int):
                 end_point = get_direction + lenght
             place_ship(Schiff(start_point, end_point), playing_board)
 
-        # wait for player move
-        while not player_move():
-            sleep(1)
-    # beende wenn letztes 4er schiff gesunken ist
-    if frequency == 0 and lenght == 4:
-        print("Game over!")
+#         # wait for player move
+#         while not player_move():
+#             sleep(1)
+#     # beende wenn letztes 4er schiff gesunken ist
+#     if frequency == 0 and lenght == 4:
+#         print("Game over!")
 
-def player_move(schiff: Schiff):
+# #def player_move(schiff: Schiff):
