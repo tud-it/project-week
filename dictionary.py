@@ -1,61 +1,60 @@
 """generate playing board"""
-from schiff import Schiff
+# from schiff import Schiff
 
-
-def create_board(groesse):
-    """generate playing board"""
-    brd = {}
-    for i in range(groesse):
-        for j in range(groesse):
-            brd[(num_to_letter(i), j)] = False
-    return brd
+# def create_board(groesse):
+#    """generate playing board"""
+#    brd = {}
+#    for i in range(groesse):
+#        for j in range(groesse):
+#            brd[(num_to_letter(i), j)] = False
+#    return brd
 
 
 # brett = create_board(10)
-
-
-def place_ship(new_ship: Schiff, board: dict):
-    """plaziert Schiff"""
-    # setzen horizontales Schiff
-    if new_ship.first.HOR == new_ship.last.HOR:
-        zeile = new_ship.first.HOR
-        start = new_ship.first.VERT
-        end = new_ship.last.VERT
-        leng = end - start
-        schnitt = 1
-        # Test ob neues Schiff ein anderes schneidet
-        for i in range(leng):
-            if test_space((zeile, start + i), board):
-                continue
-            else:
-                schnitt = 0
-        # Schiff wird im Dictionary gesetzt
-        if schnitt:
-            for i in range(leng):
-                board[(zeile, start + i)] = True
-            return board
-
-        return False
-    # setzen vertikales Schiff
-    if new_ship.first.VERT == new_ship.last.VERT:
-        spalte = new_ship.first.VERT
-        start = ord(new_ship.first.HOR)
-        end = ord(new_ship.last.HOR)
-        leng = end - start
-        schnitt = 1
-        # Test ob neues Schiff ein anderes schneidet
-        for i in range(leng):
-            if test_space((chr(start + i), spalte), board):
-                continue
-            schnitt = 0
-        # Schiff wird im Dictionary gesetzt
-        if schnitt:
-            for i in range(leng):
-                board[(chr(start + i), spalte)] = True
-            return board
-        return False
-
-
+#
+#
+# def place_ship(new_ship: Schiff, board: dict):
+#    """plaziert Schiff"""
+#    # setzen horizontales Schiff
+#    if new_ship.first.HOR == new_ship.last.HOR:
+#        zeile = new_ship.first.HOR
+#        start = new_ship.first.VERT
+#        end = new_ship.last.VERT
+#        leng = end - start
+#        schnitt = 1
+#        # Test ob neues Schiff ein anderes schneidet
+#        for i in range(leng):
+#            if test_space((zeile, start + i), board):
+#                continue
+#            else:
+#                schnitt = 0
+#        # Schiff wird im Dictionary gesetzt
+#        if schnitt:
+#            for i in range(leng):
+#                board[(zeile, start + i)] = True
+#            return board
+#
+#        return False
+#    # setzen vertikales Schiff
+#    if new_ship.first.VERT == new_ship.last.VERT:
+#        spalte = new_ship.first.VERT
+#        start = ord(new_ship.first.HOR)
+#        end = ord(new_ship.last.HOR)
+#        leng = end - start
+#        schnitt = 1
+#        # Test ob neues Schiff ein anderes schneidet
+#        for i in range(leng):
+#            if test_space((chr(start + i), spalte), board):
+#                continue
+#            schnitt = 0
+#        # Schiff wird im Dictionary gesetzt
+#        if schnitt:
+#            for i in range(leng):
+#                board[(chr(start + i), spalte)] = True
+#            return board
+#        return False
+#
+#
 def test_space(zelle, board: dict):
     return zelle in board and not board.get(zelle)
 
@@ -81,5 +80,5 @@ def letter_to_num(buchstaben: str):
     return zahl - 1
 
 
-# print(letter_to_num("SG"))
+print(letter_to_num("ABC"))
 # print(num_to_letter(500))
