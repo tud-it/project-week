@@ -8,7 +8,7 @@ from schiff import SPIELFELDGRÖSSE, Schiff
 
 
 def get_random_field():
-    board = create_board()
+    board = create_board(SPIELFELDGRÖSSE)
     field_list = list(board.keys())
     field = random.choice(field_list)
     return field

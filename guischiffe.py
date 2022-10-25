@@ -32,10 +32,12 @@ class GameBoard(tk.Frame):
         #create field and buttons
         self.label = tk.Label(self, text="0")
         self.label.pack(side="right")
-        self.button_shoot=tk.Button(self,text="shoot",command=schuss(create_board,0))
-        self.button_shoot.pack(anchor="e")
-        self.button_place=tk.Button(self,text="Place", command=set_ships(Schiff(),create_board))
-        self.button_place.pack(anchor="ne")
+        self.label_score = tk.Label(self, text="0")
+        self.label_score.pack(anchor="w")
+        self.button_score=tk.Button(self,text="score", command=score)
+        self.button_score.pack(anchor="w")
+        # self.button_shoot=tk.Button(self,text="shoot",command=schuss(create_board,0))
+        # self.button_shoot.pack(anchor="e")
         #create entrys to get numbers of ships to place
         self.length1 = tk.Entry(self, textvariable=text)
         self.label_leng1 = tk.Label(self, text="Length one:")
@@ -57,8 +59,12 @@ class GameBoard(tk.Frame):
         self.label_leng4.pack(anchor="n")
         self.length4.pack(anchor="n")
         self.ships_with_lengt_four = self.length4.get()
+        # self.button_place=tk.Button(self,text="Place", command=set_ships(Schiff(1,self.ships_with_lengt_one),create_board))
+        # self.button_place.pack(anchor="ne")
         #self.button = tk.Button(self, text="shot", command=schuss(place_ship, board.counter))
         #self.button.pack(side="right") #still not useable
+        self.button_newgame=tk.Button(self,text="New Game",command=self.reload)
+        self.button_newgame.pack(anchor="se")
         self.canvas = tk.Canvas(
             self,
             borderwidth=0,
@@ -94,13 +100,20 @@ class GameBoard(tk.Frame):
         self.canvas.tag_raise("piece")
         self.canvas.tag_lower("square")
 
+    def reload(self):
+        self.update()
+
 def shoot():
     board.counter+=1
     label=board.label
     label['text']= board.counter
+def score():
+    board.score+=1
+    board.label_score['text']=f"Treffer: {board.score}"
 if __name__ == "__main__":
     root = tk.Tk()
     board = GameBoard(root)
     board.counter = 0 #for counting the shots
+    board.score = 0 #for counting the hits
     board.pack(side="top", fill="both", expand="true", padx=4, pady=4)
     root.mainloop()
