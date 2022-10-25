@@ -1,18 +1,17 @@
-# **Gruppenprojekt "Schiffe versenken"**
+## **Gruppenprojekt "Schiffe versenken"**
+---
+<br>
 
-### Teilnehmer:
-- Florian Mros
-- Florian Herold
-- Tim Stache
-- Richard Rasch
+**Teilnehmer:** <br>
+Florian Mros,  Florian Herold,  Tim Stache,  Richard Rasch
 
 <br>
 
 In diesem Projekt geht es darum das simple Mini-Spiel "Schiffe versenken" <br>
 mithilfe von Visual Studio Code zu erstellen. <br>
 <br>
-Mit der Programmiersprache "Python" haben wir vier uns dazu entschieden loszulegen. <br>
-Das ursprüngliche Ziel war es, dass der Computer auf verschiedene Felder random<br>
-Schiffe platziert und selbst darauf schießt. Wir haben uns jedoch dazu entschieden,<br>
-das Programm weiter auszubauen, sodass eine Person gegen den Computer spielen kann (PvC). <br>
+Wir haben uns dafür entschieden mit der Programmiersprache "Python" zu arbeiten. <br>
+Das Ziel war es, dass der Computer auf verschiedene Felder Schiffe platzieren <br>
+kann und selbst darauf schießt. Wir haben uns jedoch beschlossen, das Programm <br>
+weiter auszubauen, sodass eine Person gegen den Computer spielen kann (PvC). <br>
 
