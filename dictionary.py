@@ -26,14 +26,12 @@ def place_ship(new_ship: Schiff, board: dict):
         for i in range(leng):
             if test_space((zeile, start + i), board):
                 continue
-            else:
-                schnitt = 0
+            schnitt = 0
         if schnitt:
             for i in range(leng):
                 board[(zeile, start + i)] = True
             return board
-        else:
-            return False
+        return False
 
     if new_ship.first.VERT == new_ship.last.VERT:
         spalte = new_ship.first.VERT
@@ -45,15 +43,13 @@ def place_ship(new_ship: Schiff, board: dict):
         for i in range(leng):
             if test_space((chr(start + i), spalte), board):
                 continue
-            else:
-                schnitt = 0
+            schnitt = 0
         # Schiff wird im Dictionary gesetzt
         if schnitt:
             for i in range(leng):
                 board[(chr(start + i), spalte)] = True
             return board
-        else:
-            return False
+        return False
 
 
 def test_space(zelle, board: dict):

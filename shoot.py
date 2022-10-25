@@ -1,6 +1,7 @@
 """shoot.py"""
 
 import random
+from time import sleep
 
 from dictionary import board, create_board, place_ship
 from schiff import Schiff
@@ -27,31 +28,29 @@ def schuss(dic: dict, count: int):
     return print("Nicht Getroffen!")
 
 
-def set_ships(one_long: int, two_long: int, three_long: int, four_long: int):
-    playing_board = create_board()
-    start_point = get_random_field()
-    get_direction = random.choice(start_point)
-    # vertical
-    if get_direction == start_point[0]:
-        print("TEst")
+def set_ships(frequency: int, lenght: int):
+    playing_board = create_board(10)
+    while frequency != 0:
+        start_point = get_random_field()
+        get_direction = random.choice(start_point)
 
-    # horizontal
-    elif get_direction == start_point[1]:
-        for __ in range(one_long):
-            end_point = get_direction()
-            place_ship(Schiff(start_point, end_point), playing_board)
-        for __ in range(one_long):
-            end_point = get_direction() + 2
-            place_ship(Schiff(start_point, end_point), playing_board)
-        for __ in range(one_long):
-            end_point = get_direction() + 3
-            place_ship(Schiff(start_point, end_point), playing_board)
-        for __ in range(one_long):
-            end_point = get_direction() + 4
+        # vertical
+        if get_direction == start_point[0]:
+            print("TEst")
+
+        # horizontal
+        elif get_direction == start_point[1]:
+            if lenght == 1:
+                end_point = get_direction()
+            else:
+                end_point = get_direction + lenght
             place_ship(Schiff(start_point, end_point), playing_board)
 
+        # wait for player move
+        while not player_move():
+            sleep(1)
+    # beende wenn letztes 4er schiff gesunken ist
+    if frequency == 0 and lenght == 4:
+        print("Game over!")
 
-    print(start_point, get_direction)
-
-
-set_ships(1, 2, 3, 4)
+def player_move(schiff: Schiff):
