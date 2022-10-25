@@ -3,8 +3,8 @@
 import random
 from time import sleep
 
-from dictionary import brett, create_board, place_ship
-from schiff import Schiff
+from dictionary import board, create_board, place_ship
+from schiff import Schiff, SPIELFELDGRÖSSE
 
 
 def get_random_field():
@@ -29,7 +29,7 @@ def schuss(dic: dict, count: int):
 
 
 def set_ships(frequency: int, lenght: int):
-    playing_board = create_board(10)
+    playing_board = create_board(SPIELFELDGRÖSSE)
     while frequency != 0:
         start_point = get_random_field()
         get_direction = random.choice(start_point)
@@ -46,11 +46,11 @@ def set_ships(frequency: int, lenght: int):
                 end_point = get_direction + lenght
             place_ship(Schiff(start_point, end_point), playing_board)
 
-#         # wait for player move
-#         while not player_move():
-#             sleep(1)
-#     # beende wenn letztes 4er schiff gesunken ist
-#     if frequency == 0 and lenght == 4:
-#         print("Game over!")
+    return playing_board
 
-# #def player_move(schiff: Schiff):
+def player_move(schiff: Schiff):
+    # wait for player move
+        while not player_move():
+            sleep(1)
+
+def pc_move(schiff: Schiff):
