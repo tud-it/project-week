@@ -9,4 +9,10 @@ class Schiff:
         self.first: Coordinate = f
         self.last: Coordinate = l
 
+
+# GLOBAL VALUES
 SPIELFELDGRÖSSE = 10
+pc_hit: list = []
+pc_miss: list = []
+player_hit: list = []
+player_miss: list = []

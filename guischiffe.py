@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from shoot import schuss
+from shoot import shoot
 
 
 class GameBoard(tk.Frame):
@@ -28,7 +28,7 @@ class GameBoard(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.label = tk.Label(self, text="0")
         self.label.pack(side="right")
-        self.button = tk.Button(self, text="shot", command=schuss)
+        self.button = tk.Button(self, text="shot", command=shoot)
         self.button.pack(side="right")
         self.canvas = tk.Canvas(
             self,

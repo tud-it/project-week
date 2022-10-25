@@ -4,7 +4,8 @@ import random
 from time import sleep
 
 from dictionary import create_board, place_ship
-from schiff import SPIELFELDGRÖSSE, Schiff
+from schiff import (SPIELFELDGRÖSSE, Coordinate, Schiff, pc_hit, pc_miss,
+                    player_hit, player_miss)
 
 
 def get_random_field():
@@ -14,20 +15,34 @@ def get_random_field():
     return field
 
 
-def schuss(dic: dict, count: int):
+def pc_shoot(dic: dict, count: int):
     """function to shoot a boat"""
     # empty list to store already shot field
     already_shot: list = []
     field = get_random_field()
 
     if field in already_shot:
-        schuss(dic, count)
+        pc_shoot(dic, count)
+    # check if ship is on field and shoot it
     if dic.get(field):
         hit = dic[field] = False
         count += 1
+        pc_hit.append(field)
         return hit, count
+    pc_miss.append(field)
     return print("Nicht Getroffen!")
 
+
+def player_shoot(field: Coordinate, dic: dict, count: int):
+    """lhfslhk"""
+    # check if ship is on field and shoot it
+    if dic.get(field):
+        hit = dic[field] = False
+        count += 1
+        player_hit.append(field)
+        return hit, count
+    player_miss.append(field)
+    return print("Nicht Getroffen!")
 
 def set_ships(frequency: int, lenght: int):
     playing_board = create_board(SPIELFELDGRÖSSE)
@@ -37,7 +52,7 @@ def set_ships(frequency: int, lenght: int):
 
         # vertical
         if get_direction == start_point[0]:
-            print("TEst")
+            ord(get_direction) - 65
 
         # horizontal
         elif get_direction == start_point[1]:
