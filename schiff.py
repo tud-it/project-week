@@ -9,4 +9,4 @@ class Schiff:
         self.first: Coordinate = f
         self.last: Coordinate = l
 
-
+SPIELFELDGRÖSSE = 10
