@@ -1,0 +1,15 @@
+.scores{
+	justify-content: center;
+	align-self: center;
+}
+.score {
+	display: inline-block;
+	margin: 5px 0px 5px 20px;
+}
+.mechanic{
+	display: inline-block;
+	margin: 5px 0px 5px 20px;
+}
+.shoot{
+	align-content: center;
+}

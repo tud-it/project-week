@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+	<script defer src="https://pyscript.net/latest/pyscript.js"></script>
+	<title>Super cooles Schiffeversenken!</title>
+</head>
+
+<body>
+	<div class="scores">
+		<div class="score">
+			<label for="PC_Score">PC Score:</label>
+			<output>60</output>
+		</div>
+		<div class="score">
+			<label for="Player_Score">Player Score:</label>
+			<output>60</output>
+		</div>
+	</div>
+	<div class="mechanic">
+		<div class="mechanic">
+			<h4>Menge</h4>
+			<div>
+				<label for="len_1">1 Block lang:</label>
+				<input type="number" name="len_1">
+			</div>
+			<div>
+				<label for="len_2">2 Block lang:</label>
+				<input type="number" name="len_2">
+			</div>
+			<div>
+				<label for="len_3">3 Block lang:</label>
+				<input type="number" name="len_3">
+			</div>
+			<div>
+				<label for="len_4">4 Block lang:</label>
+				<input type="number" name="len_4">
+			</div>
+		</div>
+		<div class="mechanic shoot">
+			<h4>Where to place ship:</h4>
+			<div>
+				<h5>Start of ship</h5>
+				<input type="text" placeholder="Type a Letter">
+				<input type="text" placeholder="Type a Number">
+				<h5>End os ship</h5>
+				<input type="text" placeholder="Type a Letter">
+				<input type="text" placeholder="Type a Number">
+				<button>Place</button>
+			</div>
+			<h4>Where to shoot:</h4>
+			<div>
+				<input type="text" placeholder="Type a Letter">
+				<input type="number" placeholder="Type a Number">
+				<button>shoot</button>
+			</div>
+		</div>
+	</div>
+	<div>
+		<button>New Game</button>
+	</div>
+	<div></div>
+
+</body>
+
+</html>
