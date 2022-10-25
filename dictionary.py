@@ -65,7 +65,7 @@ def num_to_letter(num: int):
         buchstabe = chr(num + 65)
         return buchstabe
 
-    buchstabe1 = num_to_letter(int(num / 26))
+    buchstabe1 = num_to_letter(int(num / 26) - 1)
     num -= 26 * int(num / 26)
     buchstabe2 = num_to_letter(num)
     buchstaben = buchstabe1 + buchstabe2
@@ -73,11 +73,13 @@ def num_to_letter(num: int):
 
 
 def letter_to_num(buchstaben: str):
-    zahl = ord(buchstaben[-1]) - 65
-    buchstaben = buchstaben[:-1]
-    zahl+=
-    return zahl
+    i = 0
+    zahl = 0
+    for buchstabe in reversed(buchstaben):
+        zahl += (ord(buchstabe) - 64) * 26**i
+        i += 1
+    return zahl - 1
 
 
-print(letter_to_num("A"))
+# print(letter_to_num("SG"))
 # print(num_to_letter(500))
