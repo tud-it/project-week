@@ -12,6 +12,8 @@ from schiff import (
     pc_miss,
     player_hit,
     player_miss,
+    playing_board_pc,
+    playing_board_player,
 )
 
 
@@ -53,7 +55,6 @@ def player_shoot(field: Coordinate, dic: dict, count: int):
 
 
 def set_ships(frequency: int, lenght: int):
-    playing_board = create_board(SPIELFELDGRÖSSE)
     while frequency != 0:
         start_point = get_random_field()
         get_direction = random.choice(start_point)
@@ -64,7 +65,7 @@ def set_ships(frequency: int, lenght: int):
                 end_point = get_direction
             else:
                 end_point = letter_to_num(get_direction) + lenght
-            place_ship(Schiff(start_point, end_point), playing_board)
+            place_ship(Schiff(start_point, end_point), playing_board_pc)
 
         # horizontal
         elif get_direction == start_point[1]:
@@ -72,6 +73,4 @@ def set_ships(frequency: int, lenght: int):
                 end_point = get_direction
             else:
                 end_point = get_direction + lenght
-            place_ship(Schiff(start_point, end_point), playing_board)
-
-    return playing_board
+            place_ship(Schiff(start_point, end_point), playing_board_pc)

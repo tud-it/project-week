@@ -1,3 +1,6 @@
+from dictionary import create_board
+
+
 class Coordinate:
     def __init__(self, H: str, V: int):
         self.HOR: str = H
@@ -14,5 +17,7 @@ class Schiff:
 SPIELFELDGRÖSSE = 10
 pc_hit: list = []
 pc_miss: list = []
+playing_board_pc = create_board(SPIELFELDGRÖSSE)
 player_hit: list = []
 player_miss: list = []
+playing_board_player = create_board(SPIELFELDGRÖSSE)
