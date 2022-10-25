@@ -3,9 +3,16 @@
 import random
 from time import sleep
 
-from dictionary import create_board, place_ship
-from schiff import (SPIELFELDGRÖSSE, Coordinate, Schiff, pc_hit, pc_miss,
-                    player_hit, player_miss)
+from dictionary import create_board, letter_to_num, place_ship
+from schiff import (
+    SPIELFELDGRÖSSE,
+    Coordinate,
+    Schiff,
+    pc_hit,
+    pc_miss,
+    player_hit,
+    player_miss,
+)
 
 
 def get_random_field():
@@ -44,6 +51,7 @@ def player_shoot(field: Coordinate, dic: dict, count: int):
     player_miss.append(field)
     return print("Nicht Getroffen!")
 
+
 def set_ships(frequency: int, lenght: int):
     playing_board = create_board(SPIELFELDGRÖSSE)
     while frequency != 0:
@@ -52,23 +60,18 @@ def set_ships(frequency: int, lenght: int):
 
         # vertical
         if get_direction == start_point[0]:
-            ord(get_direction) - 65
+            if lenght == 1:
+                end_point = get_direction
+            else:
+                end_point = letter_to_num(get_direction) + lenght
+            place_ship(Schiff(start_point, end_point), playing_board)
 
         # horizontal
         elif get_direction == start_point[1]:
             if lenght == 1:
-                end_point = get_direction()
+                end_point = get_direction
             else:
                 end_point = get_direction + lenght
             place_ship(Schiff(start_point, end_point), playing_board)
 
     return playing_board
-
-
-
-def player_move(schiff: Schiff):
-    # wait for player move
-        while not player_move():
-            sleep(1)
-
-def pc_move(schiff: Schiff):

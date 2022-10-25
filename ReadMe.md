@@ -20,7 +20,7 @@ Dokumentiert von: Florian Herold
 
 <mark> **Dienstag, 25.10.22**</mark>
 
-*Tagesziel:*
+*Tagesziel:   *
 <br>
 - ...
 - ...
