@@ -1,5 +1,7 @@
 # Dokumentation vom Projekt “Schiffe versenken”
 Teilnehmer: Florian Mros, Florian Herold, Tim Stache, Richard Rasch
+<br>
+Dokumentiert von: Florian Herold
 
 <br>
 
@@ -11,6 +13,8 @@ Teilnehmer: Florian Mros, Florian Herold, Tim Stache, Richard Rasch
 - grobe Pläne am Whiteboard
 - Einteilung der einzelnen Aufgaben
 - Umsetzung der ersten Schritte
+- erstes Zusammenführen der verschiedenen Dateien
+-
 
 <br>
 

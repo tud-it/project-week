@@ -47,14 +47,12 @@ def place_ship(new_ship: Schiff, board: dict):
         for i in range(leng):
             if test_space((chr(start + i), spalte), board):
                 continue
-            else:
-                schnitt = 0
+            schnitt = 0
         # Schiff wird im Dictionary gesetzt
         if schnitt:
             for i in range(leng):
                 board[(chr(start + i), spalte)] = True
             return board
-
         return False
 
 

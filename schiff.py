@@ -8,3 +8,5 @@ class Schiff:
     def __init__(self, f: Coordinate, l: Coordinate):
         self.first: Coordinate = f
         self.last: Coordinate = l
+
+SPIELFELDGRÖSSE = 10
