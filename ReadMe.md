@@ -1,5 +1,4 @@
 ## **Gruppenprojekt "Schiffe versenken"**
----
 <br>
 
 **Teilnehmer:** <br>
