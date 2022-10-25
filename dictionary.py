@@ -39,28 +39,30 @@ def place_ship(new_ship: Schiff, board: dict):
     # setzen vertikales Schiff
     if new_ship.first.VERT == new_ship.last.VERT:
         spalte = new_ship.first.VERT
-        start = ord(new_ship.first.HOR)
-        end = ord(new_ship.last.HOR)
+        start = letter_to_num(new_ship.first.HOR)
+        end = letter_to_num(new_ship.last.HOR)
         leng = end - start
         schnitt = 1
         # Test ob neues Schiff ein anderes schneidet
         for i in range(leng):
-            if test_space((chr(start + i), spalte), board):
+            if test_space((num_to_letter(start + i), spalte), board):
                 continue
             schnitt = 0
         # Schiff wird im Dictionary gesetzt
         if schnitt:
             for i in range(leng):
-                board[(chr(start + i), spalte)] = True
+                board[(num_to_letter(start + i), spalte)] = True
             return board
         return False
 
 
 def test_space(zelle, board: dict):
+    """tests key in dic and true"""
     return zelle in board and not board.get(zelle)
 
 
 def num_to_letter(num: int):
+    """converts numbers into letters and greater numbers to (ABC)"""
     if num < 26:
         buchstabe = chr(num + 65)
         return buchstabe
@@ -73,6 +75,7 @@ def num_to_letter(num: int):
 
 
 def letter_to_num(buchstaben: str):
+    """converts letter strings to numbers"""
     i = 0
     zahl = 0
     for buchstabe in reversed(buchstaben):
@@ -81,5 +84,23 @@ def letter_to_num(buchstaben: str):
     return zahl - 1
 
 
-# print(letter_to_num("SG"))
+def ignore_num(zkette: str):
+    """ignores input numbers"""
+    neukette = ""
+    abc = set()
+    zkette.upper()
+    for i in range(26):
+        abc.add(chr(65 + i))
+    for zeichen in zkette:
+        if zeichen in abc:
+            neukette += zeichen
+    return neukette
+
+
+def ignore_float(zahl: float):
+    """useless"""
+    return int(zahl)
+
+
+# print(letter_to_num("ABC"))
 # print(num_to_letter(500))
