@@ -13,6 +13,8 @@ and shoot them.
 <br>
 But we have decided to extend our program, so that it is possible <br>
 for a person to play against the computer (PvC). <br>
-<br>
+
+---
+
 We Documented our work in the Index "Wiki".<br>
-Feel free to take a look!
+Feel free to [take a look!](https://github.com/tud22/project_week/wiki/Documentation-of-the-project-%E2%80%9CBattleship%E2%80%9D)
