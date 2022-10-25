@@ -2,7 +2,8 @@ import tkinter as tk
 from cgitb import text
 
 from dictionary import create_board
-from schiff import Schiff
+from funk import print_all_fields
+from schiff import SPIELFELDGRÖSSE, Schiff
 from shoot import schuss, set_ships
 
 
@@ -14,7 +15,8 @@ class GameBoard(tk.Frame):
         columns=10,
         size=30,
         color1="white",
-        color2="lightblue",
+        color2="white",
+        coordinate=print_all_fields()
     ):
         """size is the size of a square, in pixels"""
 
@@ -23,6 +25,7 @@ class GameBoard(tk.Frame):
         self.size = size
         self.color1 = color1
         self.color2 = color2
+        self.coordinate=coordinate
         self.pieces = {}
 
         canvas_width = columns * size
@@ -73,6 +76,8 @@ class GameBoard(tk.Frame):
             height=canvas_height,
             background="bisque",
         )
+        for i in range(SPIELFELDGRÖSSE):
+            self.canvas.create_text(i*1,i*1,text=coordinate[i:i+1])
         self.canvas.pack(side="top", fill=tk.BOTH, expand=True, padx=2, pady=2)
 
         # this binding will cause a refresh if the user interactively
