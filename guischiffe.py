@@ -32,7 +32,7 @@ class GameBoard(tk.Frame):
         #create field and buttons
         self.label = tk.Label(self, text="0")
         self.label.pack(side="right")
-        self.label_score = tk.Label(self, text="0")
+        self.label_score = tk.Label(self, text="Treffer:")
         self.label_score.pack(anchor="w")
         self.button_score=tk.Button(self,text="score", command=score)
         self.button_score.pack(anchor="w")

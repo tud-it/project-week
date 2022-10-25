@@ -72,4 +72,4 @@ def num_to_alphabet(num: int):
         return buchstaben
 
 
-print(num_to_alphabet(500))
+#print(num_to_alphabet(500))
