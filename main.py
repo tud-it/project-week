@@ -8,13 +8,13 @@ from schiff import (
     SPIELFELDGRÖSSE,
     Coordinate,
     Schiff,
+    create_board,
     pc_hit,
     pc_miss,
     player_hit,
     player_miss,
     playing_board_pc,
     playing_board_player,
-    create_board
 )
 
 
