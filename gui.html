@@ -12,61 +12,6 @@
 </head>
 
 <body>
-
-	<div class="scores">
-		<div class="score">
-			<label for="PC_Score">PC Score:</label>
-			<output>60</output>
-		</div>
-		<div class="score">
-			<label for="Player_Score">Player Score:</label>
-			<output>60</output>
-		</div>
-	</div>
-	<div class="mechanic">
-		<div class="mechanic">
-			<h4>Menge</h4>
-			<div>
-				<label for="len_1">1 Block lang:</label>
-				<input type="number" name="len_1">
-			</div>
-			<div>
-				<label for="len_2">2 Block lang:</label>
-				<input type="number" name="len_2">
-			</div>
-			<div>
-				<label for="len_3">3 Block lang:</label>
-				<input type="number" name="len_3">
-			</div>
-			<div>
-				<label for="len_4">4 Block lang:</label>
-				<input type="number" name="len_4">
-			</div>
-		</div>
-		<div class="mechanic shoot">
-			<h4>Where to place ship:</h4>
-			<div>
-				<h5>Start of ship</h5>
-				<input type="text" placeholder="Type a Letter">
-				<input type="text" placeholder="Type a Number">
-				<h5>End os ship</h5>
-				<input type="text" placeholder="Type a Letter">
-				<input type="text" placeholder="Type a Number">
-				<button>Place</button>
-			</div>
-			<h4>Where to shoot:</h4>
-			<div>
-				<input type="text" placeholder="Type a Letter">
-				<input type="number" placeholder="Type a Number">
-				<button>shoot</button>
-			</div>
-		</div>
-	</div>
-	<div>
-		<button>New Game</button>
-	</div>
-
-
 	<table id="output" class="hello"></table>
     <p id='output'></p>
     <py-env>
@@ -74,7 +19,7 @@
     </py-env>
     <py-config type="toml">
         paths=["./globes.py"]
-    </py-config><table id="output" class="hello"></table>
+    </py-config>
     <p id='output'></p>
     <py-env>
         - tabulate
@@ -83,6 +28,7 @@
         paths=["./globes.py"]
     </py-config>
     <div>
+			<div>
         <py-script id="playerships">
             from globes import*
             spalten=[]
@@ -93,41 +39,97 @@
                 if player_board.get((num_to_letter(j),i)):
                     spalten.append("🛥")
                 else:
-                    spalten.append(" ")
+                    spalten.append("🛥")
               zeilen.append(spalten)
             def table(tabelle):
                 return tabulate(tabelle, tablefmt="html")
             print(table(zeilen))
         </py-script>
-    </div>
-    <div>
-        <py-script id="hitmiss">
-            from globes import*
-						spalten=[]
-						zeilen=[]
-						hit_miss=create_board(PLAYINGBOARDSIZE)
-						for element in player_hit:
-							hit_miss[element]="hit"
-						for element in player_miss:
-							hit_miss[element]="miss"
-						for j in range(PLAYINGBOARDSIZE):
-              spalten.clear()
-              for i in range(PLAYINGBOARDSIZE):
-                  if hit_miss.get((num_to_letter(j),i))=="hit":
-                    spalten.append("❎")
-                  elif hit_miss.get((num_to_letter(j),i))=="miss":
-                    spalten.append("❌")
+    	</div>
+    	<div>
+    	    <py-script id="hitmiss">
+							from globes import*
+							spalten=[]
+							zeilen=[]
+							hit_miss=create_board(PLAYINGBOARDSIZE)
+							for element in player_hit:
+								hit_miss[element]="hit"
+							for element in player_miss:
+								hit_miss[element]="miss"
+							for j in range(PLAYINGBOARDSIZE):
+								spalten.clear()
+								for i in range(PLAYINGBOARDSIZE):
+									if hit_miss.get((num_to_letter(j),i))=="hit":
+										spalten.append("❌")
+									elif hit_miss.get((num_to_letter(j),i))=="miss":
+										spalten.append("⭕️")
 									else:
 										spalten.append(" ")
-              zeilen.append(spalten)
-						def table(tabelle):
-              print(tabulate(tabelle, tablefmt="html"))
-						table(zeilen)
+								zeilen.append(spalten)
+							def table(tabelle):
+								print(tabulate(tabelle, tablefmt="html"))
+							table(zeilen)
 
-        </py-script>
-    </div>
+					</py-script>
+			</div>
+		</div>
 
-
+		<div class="controls">
+			<div class="scores">
+				<div class="score pc_score">
+					<label for="PC_Score">PC Score:</label>
+					<output>60</output>
+				</div>
+				<div class="score player_score">
+					<label for="Player_Score">Player Score:</label>
+					<output>60</output>
+				</div>
+			</div>
+			<div class="settings">
+				<div class="mechanic sub_settings">
+					<div class="mechanic">
+						<h4>Menge</h4>
+						<div>
+							<label for="len_1">1 Block lang:</label>
+							<input type="number" name="len_1">
+						</div>
+						<div>
+							<label for="len_2">2 Block lang:</label>
+							<input type="number" name="len_2">
+						</div>
+						<div>
+							<label for="len_3">3 Block lang:</label>
+							<input type="number" name="len_3">
+						</div>
+						<div>
+							<label for="len_4">4 Block lang:</label>
+							<input type="number" name="len_4">
+						</div>
+					</div>
+				<div class="mechanic sub_settings">
+					<h4>Where to place ship:</h4>
+					<div>
+						<h5>Start of ship</h5>
+						<input type="text" placeholder="Type a Letter">
+						<input type="text" placeholder="Type a Number">
+						<h5>End os ship</h5>
+						<input type="text" placeholder="Type a Letter">
+						<input type="text" placeholder="Type a Number">
+						<button>Place</button>
+					</div>
+					<h4>Where to shoot:</h4>
+					<div>
+						<input type="text" placeholder="Type a Letter">
+						<input type="number" placeholder="Type a Number">
+						<button>shoot</button>
+					</div>
+				</div>
+				</div>
+			</div>
+			<div>
+				<button>New Game</button>
+			</div>
+		</div>
 </body>
 
 </html>
