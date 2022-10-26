@@ -13,3 +13,13 @@
 .shoot{
 	align-content: center;
 }
+.outer {
+  display: grid;
+  place-items: center;
+}
+.below{
+	color: aqua;
+}
+.top{
+	color: black;
+}
