@@ -16,5 +16,6 @@ for a person to play against the computer (PvC). <br>
 
 ---
 
-We Documented our work in the Index "Wiki".<br>
-Feel free to [take a look!](https://github.com/tud22/project_week/wiki/Documentation-of-the-project-%E2%80%9CBattleship%E2%80%9D)
+|Play our game|Dokumentation|User Manual|About the Project|
+| ----------- | ----------- |-----------|----------|
+|[click here!](https://youtube.com)|[take a look!](https://github.com/tud22/project_week/wiki/Documentation-of-the-project-%E2%80%9CBattleship%E2%80%9D)|[If you're dumb](https://github.com/tud22/project_week/wiki/User-Manual)|[If yor're interessted](https://github.com/tud22/project_week/wiki/About-the-Projekt)
