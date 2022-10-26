@@ -1,25 +1,38 @@
-.scores{
-	justify-content: center;
-	align-self: center;
+#hitmiss{
+	display: block;
 }
-.score {
-	display: inline-block;
-	margin: 5px 0px 5px 20px;
+#hitmiss-2{
+	background-color: aqua;
+	position: absolute;
+	margin: 10px;
+
 }
-.mechanic{
-	display: inline-block;
-	margin: 5px 0px 5px 20px;
+#hitmiss-3{
+	position: absolute;
+	margin: 10px;
 }
-.shoot{
-	align-content: center;
+table{
+	table-layout:fixed;
+	width: 100%;
+	text-align: center;
 }
-.outer {
-  display: grid;
-  place-items: center;
+td{
+	border: 1px solid;
+	height: 30px;
 }
-.below{
-	color: aqua;
+.controls{
+	display: block;
+	position: absolute;
+	top: 400px;
+	width: 100%;
 }
-.top{
-	color: black;
+.scores, .settings{
+	display: flex;
+	width: 100%;
 }
+.score, .sub_settings{
+	flex: 1;
+	border: 2px;
+	text-align: center;
+}
+
