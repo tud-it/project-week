@@ -12,6 +12,7 @@
 </head>
 
 <body>
+
 	<div class="scores">
 		<div class="score">
 			<label for="PC_Score">PC Score:</label>
@@ -64,12 +65,61 @@
 	<div>
 		<button>New Game</button>
 	</div>
-	<div>
-		<py-script>
-			for i in range(0, 5):
-				print(<h1>test</h1>)
-		</py-script>
-	</div>
+
+
+	<table id="output" class="hello"></table>
+    <p id='output'></p>
+    <py-env>
+        - tabulate
+    </py-env>
+    <py-config type="toml">
+        paths=["./globes.py"]
+    </py-config><table id="output" class="hello"></table>
+    <p id='output'></p>
+    <py-env>
+        - tabulate
+    </py-env>
+    <py-config type="toml">
+        paths=["./globes.py"]
+    </py-config>
+    <div>
+        <py-script id="player">
+            from globes import*
+            spalten=[]
+            zeilen=[]
+            for j in range(10):
+                spalten.clear()
+                for i in range(10):
+                    if player_board.get((num_to_letter(j),i)):
+                        spalten.append("🛥")
+                    else:
+                        spalten.append(" ")
+                zeilen.append(spalten)
+            def table(tabelle):
+                return tabulate(tabelle, tablefmt="html")
+            print(table(zeilen))
+        </py-script>
+    </div>
+    <div>
+        <py-script id="p">
+            from globes import*
+            spalten=[]
+            zeilen=[]
+            for j in range(10):
+                spalten.clear()
+                for i in range(10):
+                    if player_board.get((num_to_letter(j),i)):
+                        spalten.append("🛥")
+                    else:
+                        spalten.append(" ")
+                zeilen.append(spalten)
+            def table(tabelle):
+                print(tabulate(tabelle, tablefmt="html"))
+            table(zeilen)
+
+        </py-script>
+    </div>
+
 
 </body>
 
