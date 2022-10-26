@@ -68,40 +68,40 @@
 
 
 	<table id="output" class="hello"></table>
-    <p id='output'></p>
-    <py-env>
-        - tabulate
-    </py-env>
-    <py-config type="toml">
-        paths=["./globes.py"]
-    </py-config><table id="output" class="hello"></table>
-    <p id='output'></p>
-    <py-env>
-        - tabulate
-    </py-env>
-    <py-config type="toml">
-        paths=["./globes.py"]
-    </py-config>
-    <div>
-        <py-script id="playerships">
-            from globes import*
-            spalten=[]
-            zeilen=[]
-            for j in range(PLAYINGBOARDSIZE):
-              spalten.clear()
-              for i in range(PLAYINGBOARDSIZE):
-                if player_board.get((num_to_letter(j),i)):
-                    spalten.append("🛥")
-                else:
-                    spalten.append(" ")
-              zeilen.append(spalten)
-            def table(tabelle):
-                return tabulate(tabelle, tablefmt="html")
-            print(table(zeilen))
-        </py-script>
-    </div>
-    <div>
-        <py-script id="hitmiss">
+		<p id='output'></p>
+		<py-env>
+			- tabulate
+		</py-env>
+		<py-config type="toml">
+			paths=["./globes.py"]
+		</py-config><table id="output" class="hello"></table>
+		<p id='output'></p>
+		<py-env>
+			- tabulate
+		</py-env>
+		<py-config type="toml">
+			paths=["./globes.py"]
+		</py-config>
+		<div>
+			<py-script id="playerships">
+				from globes import*
+				spalten=[]
+				zeilen=[]
+				for j in range(PLAYINGBOARDSIZE):
+					spalten.clear()
+					for i in range(PLAYINGBOARDSIZE):
+						if player_board.get((num_to_letter(j),i)):
+							spalten.append("🛥")
+						else:
+							spalten.append(" ")
+					zeilen.append(spalten)
+				def table(tabelle):
+					return tabulate(tabelle, tablefmt="html")
+				print(table(zeilen))
+				</py-script>
+		</div>
+		<div>
+				<py-script id="hitmiss">
 						from globes import*
 						spalten=[]
 						zeilen=[]
@@ -123,7 +123,6 @@
 						def table(tabelle):
 							print(tabulate(tabelle, tablefmt="html"))
 						table(zeilen)
-
 				</py-script>
 		</div>
 
