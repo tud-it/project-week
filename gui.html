@@ -82,41 +82,45 @@
     <py-config type="toml">
         paths=["./globes.py"]
     </py-config>
-    <div class="outer">
-			<div style="z-index: 1;">
-        <py-script id="player">
+    <div>
+        <py-script id="playerships">
             from globes import*
             spalten=[]
             zeilen=[]
-            for j in range(10):
-                spalten.clear()
-                for i in range(10):
-                    if player_board.get((num_to_letter(j),i)):
-                        spalten.append("🛥")
-                    else:
-                        spalten.append("X")
-                zeilen.append(spalten)
+            for j in range(PLAYINGBOARDSIZE):
+              spalten.clear()
+              for i in range(PLAYINGBOARDSIZE):
+                if player_board.get((num_to_letter(j),i)):
+                    spalten.append("🛥")
+                else:
+                    spalten.append(" ")
+              zeilen.append(spalten)
             def table(tabelle):
                 return tabulate(tabelle, tablefmt="html")
             print(table(zeilen))
         </py-script>
-    	</div>
-    	<div style="z-index: 2;">
-        <py-script id="p">
+    </div>
+    <div>
+        <py-script id="hitmiss">
             from globes import*
-            spalten=[]
-            zeilen=[]
-            for j in range(10):
-                spalten.clear()
-                for i in range(10):
-                    if player_board.get((num_to_letter(j),i)):
-                        spalten.append("🛥")
-                    else:
-                        spalten.append("O")
-                zeilen.append(spalten)
-            def table(tabelle):
-                print(tabulate(tabelle, tablefmt="html"))
-            table(zeilen)
+						spalten=[]
+						zeilen=[]
+						hit_miss=create_board(PLAYINGBOARDSIZE)
+						for element in player_hit:
+							hit_miss[element]="hit"
+						for element in player_miss:
+							hit_miss[element]="miss"
+						for j in range(PLAYINGBOARDSIZE):
+              spalten.clear()
+              for i in range(PLAYINGBOARDSIZE):
+                  if hit_miss.get((num_to_letter(j),i))=="hit":
+                      spalten.append("❎")
+                  elif hit_miss.get((num_to_letter(j),i))=="miss":
+                      spalten.append("❌")
+              zeilen.append(spalten)
+						def table(tabelle):
+              print(tabulate(tabelle, tablefmt="html"))
+						table(zeilen)
 
         </py-script>
     	</div>
