@@ -1,14 +1,8 @@
 """generate playing board"""
-from schiff import Schiff
+from schiff import Schiff, num_to_letter
 
 
-def create_board(groesse):
-    """generate playing board"""
-    brd = {}
-    for i in range(groesse):
-        for j in range(groesse):
-            brd[(num_to_letter(i), j)] = False
-    return brd
+
 
 
 # brett = create_board(10)
@@ -61,17 +55,7 @@ def test_space(zelle, board: dict):
     return zelle in board and not board.get(zelle)
 
 
-def num_to_letter(num: int):
-    """converts numbers into letters and greater numbers to (ABC)"""
-    if num < 26:
-        buchstabe = chr(num + 65)
-        return buchstabe
 
-    buchstabe1 = num_to_letter(int(num / 26) - 1)
-    num -= 26 * int(num / 26)
-    buchstabe2 = num_to_letter(num)
-    buchstaben = buchstabe1 + buchstabe2
-    return buchstaben
 
 
 def letter_to_num(buchstaben: str):

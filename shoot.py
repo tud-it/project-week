@@ -3,7 +3,7 @@
 import random
 from time import sleep
 
-from dictionary import create_board, letter_to_num, place_ship
+from dictionary import letter_to_num, place_ship
 from schiff import (
     SPIELFELDGRÖSSE,
     Coordinate,
@@ -14,6 +14,7 @@ from schiff import (
     player_miss,
     playing_board_pc,
     playing_board_player,
+    create_board
 )
 
 

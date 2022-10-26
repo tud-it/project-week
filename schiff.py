@@ -1,4 +1,4 @@
-from dictionary import create_board
+from tabulate import tabulate
 
 
 class Coordinate:
@@ -13,6 +13,28 @@ class Schiff:
         self.last: Coordinate = l
 
 
+def create_board(groesse):
+    """generate playing board"""
+    brd = {}
+    for i in range(groesse):
+        for j in range(groesse):
+            brd[(num_to_letter(i), j)] = False
+    return brd
+
+
+def num_to_letter(num: int):
+    """converts numbers into letters and greater numbers to (ABC)"""
+    if num < 26:
+        buchstabe = chr(num + 65)
+        return buchstabe
+
+    buchstabe1 = num_to_letter(int(num / 26) - 1)
+    num -= 26 * int(num / 26)
+    buchstabe2 = num_to_letter(num)
+    buchstaben = buchstabe1 + buchstabe2
+    return buchstaben
+
+
 # GLOBAL VALUES
 SPIELFELDGRÖSSE = 10
 pc_hit: list = []
@@ -21,3 +43,9 @@ playing_board_pc = create_board(SPIELFELDGRÖSSE)
 player_hit: list = []
 player_miss: list = []
 playing_board_player = create_board(SPIELFELDGRÖSSE)
+
+
+# from schiff import playing_board_player
+def table(tabelle):
+
+    print(tabulate(tabelle, tablefmt="html"))
