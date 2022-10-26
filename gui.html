@@ -83,13 +83,13 @@
         paths=["./globes.py"]
     </py-config>
     <div>
-        <py-script id="player">
+        <py-script id="playerships">
             from globes import*
             spalten=[]
             zeilen=[]
-            for j in range(10):
+            for j in range(PLAYINGBOARDSIZE):
                 spalten.clear()
-                for i in range(10):
+                for i in range(PLAYINGBOARDSIZE):
                     if player_board.get((num_to_letter(j),i)):
                         spalten.append("🛥")
                     else:
@@ -101,17 +101,22 @@
         </py-script>
     </div>
     <div>
-        <py-script id="p">
+        <py-script id="hitmiss">
             from globes import*
+						hit_miss=create_board(PLAYINGBOARDSIZE)
+						for element in player_hit:
+							hit_miss[element]="hit"
+						for element in player_miss:
+							hit_miss[element]="miss"
             spalten=[]
             zeilen=[]
-            for j in range(10):
+            for j in range(PLAYINGBOARDSIZE):
                 spalten.clear()
-                for i in range(10):
-                    if player_board.get((num_to_letter(j),i)):
-                        spalten.append("🛥")
-                    else:
-                        spalten.append(" ")
+                for i in range(PLAYINGBOARDSIZE):
+                    if hit_miss.get((num_to_letter(j),i))=="hit":
+                        spalten.append("❎")
+                    elif hit_miss.get((num_to_letter(j),i))=="miss":
+                        spalten.append("❌")
                 zeilen.append(spalten)
             def table(tabelle):
                 print(tabulate(tabelle, tablefmt="html"))
