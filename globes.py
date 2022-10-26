@@ -36,13 +36,13 @@ def num_to_letter(num: int):
 
 
 # GLOBAL VALUES
-SPIELFELDGRÖSSE = 10
+PLAYINGBOARDSIZE = 10
 player_hit: list = []
 player_miss: list = []
-playing_board_player = create_board(SPIELFELDGRÖSSE)
+player_board = create_board(PLAYINGBOARDSIZE)
 pc_hit: list = []
 pc_miss: list = []
-playing_board_pc = create_board(SPIELFELDGRÖSSE)
+pc_board = create_board(PLAYINGBOARDSIZE)
 
 
 # from schiff import playing_board_player
