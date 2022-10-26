@@ -88,13 +88,13 @@
             spalten=[]
             zeilen=[]
             for j in range(PLAYINGBOARDSIZE):
-                spalten.clear()
-                for i in range(PLAYINGBOARDSIZE):
-                    if player_board.get((num_to_letter(j),i)):
-                        spalten.append("🛥")
-                    else:
-                        spalten.append(" ")
-                zeilen.append(spalten)
+              spalten.clear()
+              for i in range(PLAYINGBOARDSIZE):
+                if player_board.get((num_to_letter(j),i)):
+                    spalten.append("🛥")
+                else:
+                    spalten.append(" ")
+              zeilen.append(spalten)
             def table(tabelle):
                 return tabulate(tabelle, tablefmt="html")
             print(table(zeilen))
@@ -103,24 +103,24 @@
     <div>
         <py-script id="hitmiss">
             from globes import*
+						spalten=[]
+						zeilen=[]
 						hit_miss=create_board(PLAYINGBOARDSIZE)
 						for element in player_hit:
 							hit_miss[element]="hit"
 						for element in player_miss:
 							hit_miss[element]="miss"
-            spalten=[]
-            zeilen=[]
-            for j in range(PLAYINGBOARDSIZE):
-                spalten.clear()
-                for i in range(PLAYINGBOARDSIZE):
-                    if hit_miss.get((num_to_letter(j),i))=="hit":
-                        spalten.append("❎")
-                    elif hit_miss.get((num_to_letter(j),i))=="miss":
-                        spalten.append("❌")
-                zeilen.append(spalten)
-            def table(tabelle):
-                print(tabulate(tabelle, tablefmt="html"))
-            table(zeilen)
+						for j in range(PLAYINGBOARDSIZE):
+              spalten.clear()
+              for i in range(PLAYINGBOARDSIZE):
+                  if hit_miss.get((num_to_letter(j),i))=="hit":
+                      spalten.append("❎")
+                  elif hit_miss.get((num_to_letter(j),i))=="miss":
+                      spalten.append("❌")
+              zeilen.append(spalten)
+						def table(tabelle):
+              print(tabulate(tabelle, tablefmt="html"))
+						table(zeilen)
 
         </py-script>
     </div>
