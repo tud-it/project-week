@@ -16,7 +16,7 @@ class Ship:
         self.first: Coordinate = f
         self.last: Coordinate = l
 
-# GLOBAL VALUES
+# GLOBAL VALUES 
 PLAYINGBOARDSIZE = 10
 player1_hit: list = []
 player1_miss: list = []
