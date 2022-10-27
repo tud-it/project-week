@@ -60,9 +60,9 @@
 							for j in range(PLAYINGBOARDSIZE+1):
 								spalten.clear()
 								for i in range(PLAYINGBOARDSIZE+2):
-									if hit_miss.get((num_to_letter(j),i))=="hit":
+									if hit_miss.get((num_to_letter(j+1),i+1))=="hit":
 										spalten.append("❌")
-									elif hit_miss.get((num_to_letter(j),i))=="miss":
+									elif hit_miss.get((num_to_letter(j+1),i+1))=="miss":
 										spalten.append("⭕️")
 									else:
 										spalten.append(" ")
