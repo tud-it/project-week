@@ -12,20 +12,11 @@
 </head>
 
 <body>
-	<table id="output" class="hello"></table>
-    <p id='output'></p>
     <py-env>
         - tabulate
     </py-env>
     <py-config type="toml">
-        paths=["./globes.py"]
-    </py-config>
-    <p id='output'></p>
-    <py-env>
-        - tabulate
-    </py-env>
-    <py-config type="toml">
-        paths=["./globes.py"]
+        paths=["./globes.py","./main.py"]
     </py-config>
     <div class="board">
 			<div class="playerships">
@@ -86,8 +77,8 @@
 				</div>
 			</div>
 			<div class="settings">
-				<div class="mechanic sub_settings">
-					<div class="mechanic">
+				<div class="mechanic">
+					<div class="set">
 						<h4>Menge</h4>
 						<div class="len_1">
 							<label for="len_1">1 Block lang:</label>
@@ -106,7 +97,7 @@
 							<input type="number" name="len_4">
 						</div>
 					</div>
-				<div class="mechanic sub_settings">
+				<div class="place">
 					<h4>Where to place ship:</h4>
 					<div class="placeship_mechanic">
 						<h5>Start of ship</h5>
@@ -128,6 +119,11 @@
 			</div>
 			<div class="restart_mechanic">
 				<button class="button_reset">Reset</button>
+				<pyscript id="reset">
+					<!-- reset = document.getElementById("button")
+					reset.addEventListener("click", function_proxy) -->
+					print("hello")
+				</pyscript>
 				<button class="button_newgame">New Game</button>
 			</div>
 		</div>
