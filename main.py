@@ -144,10 +144,14 @@ def set_ships_pc(frequency: int, lenght: int):
         if get_direction == start_point[0]:
             if lenght == 1:
                 end_point = get_direction
-                place_ship(Schiff(start_point, end_point), pc_board)
+                last_block = Coordinate(get_direction, start_point[0])
+                print(start_point, last_block)
+                place_ship(Schiff(start_point, last_block), pc_board)
             else:
                 end_point = letter_to_num(get_direction) + lenght
+                end_point = num_to_letter(end_point)
                 if end_point < PLAYINGBOARDSIZE:
+                    last_block = Coordinate(end_point, start_point[0])
                     place_ship(Schiff(start_point, end_point), pc_board)
                     frequency -= 1
 
@@ -155,44 +159,25 @@ def set_ships_pc(frequency: int, lenght: int):
         elif get_direction == start_point[1]:
             if lenght == 1:
                 end_point = get_direction
-                place_ship(Schiff(start_point, end_point), pc_board)
+                last_block = Coordinate(get_direction, start_point[1])
+                print(start_point, last_block)
+                place_ship(Schiff(start_point, last_block), pc_board)
             else:
                 end_point = get_direction + lenght
                 if end_point < PLAYINGBOARDSIZE:
+                    last_block = Coordinate(get_direction, start_point[1])
                     place_ship(Schiff(start_point, end_point), pc_board)
                     frequency -= 1
 
 
-# def set_ships_player(ship: Schiff):
-#    while frequency != 0:
-#        start_point = input()
-#        get_direction = input()
-#
-#        # vertical
-#        if get_direction == start_point[0]:
-#            if lenght == 1:
-#                end_point = get_direction
-#                place_ship(Schiff(start_point, end_point), playing_board_pc)
-#            else:
-#                end_point = letter_to_num(get_direction) + lenght
-#                if end_point < SPIELFELDGRÖSSE:
-#                    place_ship(Schiff(start_point, end_point), playing_board_pc)
-#                    frequency -= 1
-#
-#        # horizontal
-#        elif get_direction == start_point[1]:
-#            if lenght == 1:
-#                end_point = get_direction
-#                place_ship(Schiff(start_point, end_point), playing_board_pc)
-#            else:
-#                end_point = get_direction + lenght
-#                if end_point < SPIELFELDGRÖSSE:
-#                    place_ship(Schiff(start_point, end_point), playing_board_pc)
-#                    frequency -= 1
+def set_ships_player(ship: Schiff):
+    place_ship(ship, player_board)
 
 
 def player_move(target: Coordinate, count: int):
-    player_shoot(target, pc_board, count)
+    temp_board = create_board(PLAYINGBOARDSIZE)
+    while pc_board != temp_board:
+        player_shoot(target, pc_board, count)
     return True
 
 
@@ -203,3 +188,6 @@ def pc_move(count: int):
         # wait for player move
         while not player_move:
             sleep(1)
+
+
+set_ships_pc(2,1)

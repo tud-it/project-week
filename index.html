@@ -18,6 +18,7 @@
     <py-config type="toml">
         paths=["./globes.py","./main.py"]
     </py-config>
+		<div id="playerships"></div>
     <div class="board">
 			<div class="playerships">
         <py-script id="playerships">
@@ -32,7 +33,7 @@
 										if player_board.get((num_to_letter(j),i)):
 											spalten.append("🛥")
 										else:
-											spalten.append("🛥")
+											spalten.append(" ")
 									else:
 										spalten.append(j-1)
 							else:
@@ -44,7 +45,8 @@
 							zeilen.append(spalten[0:-1])
 						def table(tabelle):
 							return tabulate(tabelle, tablefmt="html")
-						print(table(zeilen))
+							pyscript.write("playerships",table(zeilen))
+
         </py-script>
     	</div>
     	<div class="hitmiss1">
@@ -69,16 +71,75 @@
 								zeilen.append(spalten[0:-1])
 							def table(tabelle):
 								print(tabulate(tabelle, tablefmt="html"))
-							table(zeilen)
+								pyscript.write("hittmiss1",table(zeilen))
 
 					</py-script>
 			</div>
 			<div class="button_shoot">
 				<py-script id="button_shoot">
+					from main import *
+					from globes import *
+					Letter=Element("letter")
+					number=Element("number")
+					player_move(Coordinate(Letter,number),1)
+
 
 
 				</py-script>
 		</div>
+		<div class="button_place">
+			<py-script id="button_place">
+				from main import *
+				from globes import *
+				letterf=Element("letterf")
+				numberf=Element("numberf")
+				letterl=Element("letterl")
+				numberl=Element("numberl")
+				set_ships_player(Schiff(Coordinate(letterf,numberf),Coordinate(letterl,numberl)))
+
+
+
+			</py-script>
+	</div>
+	<div class="button_reset">
+		<py-script id="button_reset">
+			from main import *
+			from globes import *
+			pc_board=create_board(PLAYINGBOARDSIZE)
+			player_board=create_board(PLAYINGBOARDSIZE)
+			player_hit=[]
+			player_miss=[]
+			pc_miss=[]
+			pc_hit=[]
+
+
+
+		</py-script>
+</div>
+<div class="button_newggame">
+	<py-script id="button_newgame">
+		from main import *
+		from globes import *
+		pc_board=create_board(PLAYINGBOARDSIZE)
+		player_board=create_board(PLAYINGBOARDSIZE)
+		player_hit=[]
+		player_miss=[]
+		pc_miss=[]
+		pc_hit=[]
+		len1=Element("len1")
+		len2=Element("len2")
+		len3=Element("len3")
+		len4=Element("len4")
+
+		set_ships_pc(len1,1)
+		set_ships_pc(len2,2)
+		set_ships_pc(len3,3)
+		set_ships_pc(len4,4)
+
+
+
+	</py-script>
+</div>
 		</div>
 
 		<div class="controls">
@@ -100,19 +161,19 @@
 							<div class="inp">
 								<div class="len_1">
 									<label for="len_1">1 Block lang:</label>
-									<input type="number" name="len_1">
+									<input type="number" name="len_1" id="len1">
 								</div>
 								<div class="len_2">
 									<label for="len_2">2 Block lang:</label>
-									<input type="number" name="len_2">
+									<input type="number" name="len_2" id="len2">
 								</div>
 								<div class="len_3">
 									<label for="len_3">3 Block lang:</label>
-									<input type="number" name="len_3">
+									<input type="number" name="len_3" id="len3">
 								</div>
 								<div class="len_4">
 									<label for="len_4">4 Block lang:</label>
-									<input type="number" name="len_4">
+									<input type="number" name="len_4" id="len4">
 								</div>
 							</div>
 						</div>
@@ -120,27 +181,27 @@
 						<h4>Where to place ship:</h4>
 						<div class="placeship_mechanic">
 							<h5>Start of ship</h5>
-							<input type="text" placeholder="Type a Letter">
-							<input type="text" placeholder="Type a Number">
+							<input type="text" placeholder="Type a Letter" id="letterf">
+							<input type="text" placeholder="Type a Number"id="numberf">
 							<h5>End os ship</h5>
-							<input type="text" placeholder="Type a Letter">
-							<input type="text" placeholder="Type a Number">
+							<input type="text" placeholder="Type a Letter" id="letterl">
+							<input type="text" placeholder="Type a Number"id="numberl">
 							<br>
-							<button class="button_place">Place</button>
+							<button class="button_place" onclick="getElementById(button_place)">Place</button>
 						</div>
 						<h4>Where to shoot:</h4>
 						<div class="shoot_mechanic">
-							<input type="text" placeholder="Type a Letter">
-							<input type="number" placeholder="Type a Number">
+							<input type="text" placeholder="Type a Letter" id="letter">
+							<input type="number" placeholder="Type a Number" id="number">
 							<br>
-							<button class="button_shoot">shoot</button>
+							<button class="button_shoot" onclick="getElementById(button_shoot)">shoot</button>
 						</div>
 					</div>
 					</div>
 				</div>
 				<div class="restart_mechanic">
-					<button class="button-42 button_reset">Reset</button>
-					<button class="button-42 button_newgame">New Game</button>
+					<button class="button-42 button_reset"onclick="getElementById(button_reset)">Reset</button>
+					<button class="button-42 button_newgame"onclick="getElementById(button_newgame)">New Game</button>
 				</div>
 			</div>
 		</div>

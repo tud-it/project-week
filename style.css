@@ -1,4 +1,4 @@
-body{
+/* body{
 	background-image: url(https://image.cnbcfm.com/api/v1/image/106844324-1614097957170-gettyimages-666333588-95282604.jpeg?v=1614098007);
 	background-size: 100%;
 }
@@ -39,7 +39,7 @@ table{
 	text-align: center;
 	font-size: 35px;
 	width: 90%;
-	height: 90%;	
+	height: 90%;
 }
 td{
 	border: 1px solid;
@@ -113,4 +113,4 @@ td{
   background-color: #545dc6;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
-}
+} */
