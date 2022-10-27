@@ -52,12 +52,12 @@
 							from globes import*
 							spalten=[]
 							zeilen=[]
-							hit_miss=create_board(PLAYINGBOARDSIZE+1)
+							hit_miss=create_board(PLAYINGBOARDSIZE)
 							for element in player_hit:
 								hit_miss[element]="hit"
 							for element in player_miss:
 								hit_miss[element]="miss"
-							for j in range(PLAYINGBOARDSIZE+2):
+							for j in range(PLAYINGBOARDSIZE+1):
 								spalten.clear()
 								for i in range(PLAYINGBOARDSIZE+2):
 									if hit_miss.get((num_to_letter(j),i))=="hit":
@@ -72,17 +72,13 @@
 							table(zeilen)
 
 					</py-script>
-					<!-- <pyscript id="reset">
-						from main import *
-						from globes import *
-						player_board = create_board(PLAYINGBOARDSIZE)
-						pc_board = create_board(PLAYINGBOARDSIZE)
-
-						reset = document.getElementById("button")
-						reset.addEventListener("click", function_proxy)
-						print("hello")
-					</pyscript> -->
 			</div>
+			<div class="button_shoot">
+				<py-script id="button_shoot">
+
+
+				</py-script>
+		</div>
 		</div>
 
 		<div class="controls">
