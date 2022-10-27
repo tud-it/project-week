@@ -1,34 +1,116 @@
-#hitmiss-2{
-	background-color: lightblue;
+body{
+	background-image: url(https://image.cnbcfm.com/api/v1/image/106844324-1614097957170-gettyimages-666333588-95282604.jpeg?v=1614098007);
+	background-size: 100%;
 }
-#hitmiss-3, #hitmiss-2{
-	position:absolute;
-  width:100%;
+.board{
+	position: absolute;
+	left: 20px;
+	top: 10px;
+	border-radius: 10px;
+	background-color: #95979ebd;
+	padding: 5px;
+	width: 45%;
+	height: 650px;
+}
+
+.hitmiss1{
+	position: relative;
+	float: left;
+	margin: 10px;
+	width: 100%;
+}
+#button_shoot-2{
+	justify-content: center;
+}
+#button_shoot-2 td{
+		background-image: url(https://img.freepik.com/free-vector/blue-water-surface-template-cartoon-style_1308-56686.jpg?w=2000);
+		background-size: 100%;
+	}
+#button_shoot-3, #button_shoot-2{
   top:0px;
 	margin: 10px;
 }
+#button_shoot-3 table, #button_shoot-3 td, #button_shoot-3 tr{
+	border: none;
+}
 table{
+	position: absolute;
 	table-layout:fixed;
-	width: 1000px;
 	text-align: center;
+	font-size: 35px;
+	width: 90%;
+	height: 90%;	
 }
 td{
 	border: 1px solid;
-	height: 100px;
+	height: 10px;
+	width: 10px;
 }
 .controls{
-	display: block;
-	position:absolute;
-  width:100%;
-  bottom:0px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	border-radius: 10px;
+	background-color: #95979ebd;
+	padding: 5px;
+	margin: 10px;
+	right: 10px;
+	height: 90%;
+	width: 45%;
 }
-.scores, .settings{
-	display: flex;
+.controls_content{
+	display: block;
+  justify-content: center;
+  align-items: center;
 	width: 100%;
 }
-.score, .sub_settings{
+.scores{
+	text-align: center;
+}
+.scores, .settings{
+	width: 50%;
+}
+.score, .mechanic{
 	flex: 1;
 	border: 2px;
 	text-align: center;
 }
+.pc_score, .player_score{
+	border-radius: 10px;
+	background-color: #c56b64bd;
+	padding: 5px;
+	margin: 10px;
+}
 
+.restart_mechanic{
+	display: flex;
+  justify-content: center;
+  align-items: center;
+	width: 100%;
+}
+.button_reset, .button_newgame{
+	margin: 5%;
+	width: 50;
+}
+.button-42 {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #5472c6;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button-42:hover {background-color: #545dc6}
+
+.button-42:active {
+  background-color: #545dc6;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}

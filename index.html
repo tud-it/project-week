@@ -47,7 +47,7 @@
 						print(table(zeilen))
         </py-script>
     	</div>
-    	<div class="hitmiss">
+    	<div class="hitmiss1">
     	    <py-script id="hitmiss">
 							from globes import*
 							spalten=[]
@@ -82,60 +82,66 @@
 		</div>
 
 		<div class="controls">
-			<div class="scores">
-				<div class="score pc_score">
-					<label for="PC_Score">PC Score:</label>
-					<output>60</output>
-				</div>
-				<div class="score player_score">
-					<label for="Player_Score">Player Score:</label>
-					<output>60</output>
-				</div>
-			</div>
-			<div class="settings">
-				<div class="mechanic">
-					<div class="set">
-						<h4>Menge</h4>
-						<div class="len_1">
-							<label for="len_1">1 Block lang:</label>
-							<input type="number" name="len_1">
-						</div>
-						<div class="len_2">
-							<label for="len_2">2 Block lang:</label>
-							<input type="number" name="len_2">
-						</div>
-						<div class="len_3">
-							<label for="len_3">3 Block lang:</label>
-							<input type="number" name="len_3">
-						</div>
-						<div class="len_4">
-							<label for="len_4">4 Block lang:</label>
-							<input type="number" name="len_4">
-						</div>
+			<div class="controls_content">
+				<div class="scores">
+					<div class="pc_score">
+						<label for="PC_Score">PC Score:</label>
+						<output>60</output>
 					</div>
-				<div class="place">
-					<h4>Where to place ship:</h4>
-					<div class="placeship_mechanic">
-						<h5>Start of ship</h5>
-						<input type="text" placeholder="Type a Letter">
-						<input type="number" placeholder="Type a Number">
-						<h5>End os ship</h5>
-						<input type="text" placeholder="Type a Letter">
-						<input type="number" placeholder="Type a Number">
-						<button class="button_place">Place</button>
-					</div>
-					<h4>Where to shoot:</h4>
-					<div class="shoot_mechanic">
-						<input type="text" placeholder="Type a Letter">
-						<input type="number" placeholder="Type a Number">
-						<button class="button_shoot">shoot</button>
+					<div class="player_score">
+						<label for="Player_Score">Player Score:</label>
+						<output>60</output>
 					</div>
 				</div>
+				<div class="settings">
+					<div class="mechanic">
+						<div class="set">
+							<h4>Menge</h4>
+							<div class="inp">
+								<div class="len_1">
+									<label for="len_1">1 Block lang:</label>
+									<input type="number" name="len_1">
+								</div>
+								<div class="len_2">
+									<label for="len_2">2 Block lang:</label>
+									<input type="number" name="len_2">
+								</div>
+								<div class="len_3">
+									<label for="len_3">3 Block lang:</label>
+									<input type="number" name="len_3">
+								</div>
+								<div class="len_4">
+									<label for="len_4">4 Block lang:</label>
+									<input type="number" name="len_4">
+								</div>
+							</div>
+						</div>
+					<div class="place">
+						<h4>Where to place ship:</h4>
+						<div class="placeship_mechanic">
+							<h5>Start of ship</h5>
+							<input type="text" placeholder="Type a Letter">
+							<input type="text" placeholder="Type a Number">
+							<h5>End os ship</h5>
+							<input type="text" placeholder="Type a Letter">
+							<input type="text" placeholder="Type a Number">
+							<br>
+							<button class="button_place">Place</button>
+						</div>
+						<h4>Where to shoot:</h4>
+						<div class="shoot_mechanic">
+							<input type="text" placeholder="Type a Letter">
+							<input type="number" placeholder="Type a Number">
+							<br>
+							<button class="button_shoot">shoot</button>
+						</div>
+					</div>
+					</div>
 				</div>
-			</div>
-			<div class="restart_mechanic">
-				<button class="button_reset" onclick="getElementbyId('reset')">Reset</button>
-				<button class="button_newgame">New Game</button>
+				<div class="restart_mechanic">
+					<button class="button-42 button_reset">Reset</button>
+					<button class="button-42 button_newgame">New Game</button>
+				</div>
 			</div>
 		</div>
 </body>
