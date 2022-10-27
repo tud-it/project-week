@@ -5,20 +5,14 @@ body{
 .board{
 	position: absolute;
 	left: 20px;
-	top: 10px;
+	top: 90px;
 	border-radius: 10px;
 	background-color: #95979ebd;
 	padding: 5px;
 	width: 45%;
-	height: 650px;
+	height: 700px;
 }
 
-.hitmiss1{
-	position: relative;
-	float: left;
-	margin: 10px;
-	width: 100%;
-}
 #button_shoot-2{
 	justify-content: center;
 }
@@ -39,7 +33,7 @@ table{
 	text-align: center;
 	font-size: 35px;
 	width: 90%;
-	height: 90%;	
+	height: 90%;
 }
 td{
 	border: 1px solid;
@@ -66,27 +60,60 @@ td{
 }
 .scores{
 	text-align: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
 }
-.scores, .settings{
+.pc_score, .player_score{
+	font-size: 20px;
 	width: 50%;
-}
-.score, .mechanic{
-	flex: 1;
-	border: 2px;
-	text-align: center;
 }
 .pc_score, .player_score{
 	border-radius: 10px;
-	background-color: #c56b64bd;
+	background-color: #c3f196a3;
 	padding: 5px;
 	margin: 10px;
 }
-
-.restart_mechanic{
+.heading{
+	font-size: 25px;
+	font-weight: bold;
+}
+.mechanic{
+	text-align: center;
+	justify-content: center;
+	align-items: center;
 	display: flex;
-  justify-content: center;
-  align-items: center;
-	width: 100%;
+}
+.start_end{
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+.set, .place{
+	border-radius: 10px;
+	background-color: #c3f196a3;
+	padding: 5px;
+	margin: 10px;
+	width: 45%;
+	height: 400px;
+
+}
+.place_btn{
+	height: 100%;
+}
+.placeship_mechanic{
+	margin-right: 10px;
+	text-align: right;
+}
+.button_place{
+	height: 150px;
+	margin-right: 10px;
+}
+.restart_mechanic{
+	text-align: center;
+	justify-content: center;
+	align-items: center;
 }
 .button_reset, .button_newgame{
 	margin: 5%;
@@ -101,16 +128,80 @@ td{
   text-decoration: none;
   outline: none;
   color: #fff;
-  background-color: #5472c6;
+  background-color: #da1e1e;
   border: none;
   border-radius: 15px;
   box-shadow: 0 9px #999;
 }
 
-.button-42:hover {background-color: #545dc6}
+.button-42:hover {background-color: #b21414}
 
 .button-42:active {
-  background-color: #545dc6;
+  background-color: #b21414;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+.inp input[type=text], .inp input[type=number] {
+  padding:10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+	margin: 2px;
+	border-radius:10px;
+}
+.inp label {
+  color: #603213;
+  font-weight: bold;
+  display: block;
+}
+.inp label:after { content: ": " }
+
+.place input[type=text], .place input[type=number] {
+  padding:10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+	margin: -1px;
+	border-radius:10px;
+	width: 25%;
+}
+.place label {
+  color: #603213;
+  font-weight: bold;
+  display: block;
+}
+.place label:after { content: ": " }
+
+.btn {
+	appearance: none;
+	-webkit-appearance: none;
+  font-family: sans-serif;
+  cursor: pointer;
+  padding: 12px;
+  min-width: 100px;
+  border: 0px;
+    -webkit-transition: background-color 100ms linear;
+    -ms-transition: background-color 100ms linear;
+		transition: background-color 100ms linear;
+	}
+
+	.btn:focus, .btn.focus {
+  outline: 0;
+}
+
+.btn-round {
+	border-radius: 20px;
+}
+
+.btn-primary {
+  background: #399329;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+	background: #2d7321;
+  color: #ffffff;
+}
+.shooting{
+	margin-top: 5px;
+}
+/* -----------------temp----------------- */

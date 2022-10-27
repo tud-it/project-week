@@ -8,10 +8,13 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 	<script defer src="https://pyscript.net/latest/pyscript.js"></script>
-	<title>Super cooles Schiffeversenken!</title>
+	<title>Battleships</title>
 </head>
 
 <body>
+
+	<h1><u>Battleships</u></h1>
+
     <py-env>
         - tabulate
     </py-env>
@@ -85,62 +88,76 @@
 			<div class="controls_content">
 				<div class="scores">
 					<div class="pc_score">
-						<label for="PC_Score">PC Score:</label>
+						<label for="PC_Score">PC Score</label>
 						<output>60</output>
 					</div>
 					<div class="player_score">
-						<label for="Player_Score">Player Score:</label>
+						<label for="Player_Score">Player Score</label>
 						<output>60</output>
 					</div>
 				</div>
 				<div class="settings">
 					<div class="mechanic">
 						<div class="set">
-							<h4>Menge</h4>
 							<div class="inp">
-								<div class="len_1">
-									<label for="len_1">1 Block lang:</label>
-									<input type="number" name="len_1">
+								<div class="heading">
+									Menge:
 								</div>
-								<div class="len_2">
-									<label for="len_2">2 Block lang:</label>
-									<input type="number" name="len_2">
+								<div class="len_1_c">
+									<label for="len_1" class="form__label">1 Block lang</label>
+									<input type="number" class="form__field" name="len_1" placeholder="Type a Number">
 								</div>
-								<div class="len_3">
-									<label for="len_3">3 Block lang:</label>
-									<input type="number" name="len_3">
+								<div class="len_2_c">
+									<label for="len_2" class="form__label">2 Block lang</label>
+									<input type="number" class="form__field" name="len_2" placeholder="Type a Number">
 								</div>
-								<div class="len_4">
-									<label for="len_4">4 Block lang:</label>
-									<input type="number" name="len_4">
+								<div class="len_3_c">
+									<label for="len_3" class="form__label">3 Block lang</label>
+									<input type="number" class="form__field" name="len_3" placeholder="Type a Number">
+								</div>
+								<div class="len_4_c">
+									<label for="len_4" class="form__label">4 Block lang</label>
+									<input type="number" class="form__field" name="len_4" placeholder="Type a Number">
 								</div>
 							</div>
 						</div>
-					<div class="place">
-						<h4>Where to place ship:</h4>
-						<div class="placeship_mechanic">
-							<h5>Start of ship</h5>
-							<input type="text" placeholder="Type a Letter">
-							<input type="text" placeholder="Type a Number">
-							<h5>End os ship</h5>
-							<input type="text" placeholder="Type a Letter">
-							<input type="text" placeholder="Type a Number">
-							<br>
-							<button class="button_place">Place</button>
+						<div class="place">
+							<div class="heading">
+								Where to place ship:
+							</div>
+							<div class="start_end">
+								<div class="placeship_mechanic">
+									<div>
+										Start of the ship:
+									</div>
+									<input type="text" placeholder="Type a Letter">
+									<input type="text" placeholder="Type a Number">
+									<div>
+										End os the ship:
+									</div>
+									<input type="text" placeholder="Type a Letter">
+									<input type="text" placeholder="Type a Number">
+								</div>
+								<div class="wrap place_btn">
+									<button class="button_place btn btn-primary btn-round">Place</button>
+								</div>
+							</div>
+							<div class="heading">
+								Where to shoot:
+							</div>
+							<div class="shoot_mechanic">
+								<input type="text" placeholder="Type a Letter">
+								<input type="number" placeholder="Type a Number">
+								<div class="shooting">
+									<button class="btn btn-primary btn-round">shoot</button>
+								</div>
+							</div>
 						</div>
-						<h4>Where to shoot:</h4>
-						<div class="shoot_mechanic">
-							<input type="text" placeholder="Type a Letter">
-							<input type="number" placeholder="Type a Number">
-							<br>
-							<button class="button_shoot">shoot</button>
-						</div>
-					</div>
-					</div>
 				</div>
 				<div class="restart_mechanic">
-					<button class="button-42 button_reset">Reset</button>
 					<button class="button-42 button_newgame">New Game</button>
+					<br>
+					<button class="button-42 button_reset">Reset</button>
 				</div>
 			</div>
 		</div>
