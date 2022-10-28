@@ -1,7 +1,7 @@
 ## **Our Group-project "Battleship"**
 
 **Attendees:** <br>
-Florian Mros,   Florian Herold,  Tim Stache,  Richard Rasch
+Florian Mros (leader),   Florian Herold (documenter),  Tim Stache,  Robert Rasch
 
 <br>
 
