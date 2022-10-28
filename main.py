@@ -190,4 +190,4 @@ def pc_move(count: int):
             sleep(1)
 
 
-set_ships_pc(2,1)
+set_ships_pc(2, 1)

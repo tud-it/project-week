@@ -25,6 +25,7 @@
           	from globes import*
 						spalten=[]
 						zeilen=[]
+						player_board[("C",4)]=True
 						for j in range(PLAYINGBOARDSIZE+1):
 							spalten.clear()
 							if j:
@@ -45,7 +46,7 @@
 							zeilen.append(spalten[0:-1])
 						def table(tabelle):
 							return tabulate(tabelle, tablefmt="html")
-							pyscript.write("playerships",table(zeilen))
+						pyscript.write("playerships",table(zeilen))
 
         </py-script>
     	</div>
@@ -71,17 +72,17 @@
 								zeilen.append(spalten[0:-1])
 							def table(tabelle):
 								print(tabulate(tabelle, tablefmt="html"))
-								pyscript.write("hittmiss1",table(zeilen))
+							pyscript.write("hittmiss1",table(zeilen))
 
 					</py-script>
 			</div>
 			<div class="button_shoot">
 				<py-script id="button_shoot">
-					from main import *
+					<!-- from main import *
 					from globes import *
 					Letter=Element("letter")
 					number=Element("number")
-					player_move(Coordinate(Letter,number),1)
+					player_move(Coordinate(Letter,number),1) -->
 
 
 
@@ -89,13 +90,13 @@
 		</div>
 		<div class="button_place">
 			<py-script id="button_place">
-				from main import *
+				<!-- from main import *
 				from globes import *
 				letterf=Element("letterf")
 				numberf=Element("numberf")
 				letterl=Element("letterl")
-				numberl=Element("numberl")
-				set_ships_player(Schiff(Coordinate(letterf,numberf),Coordinate(letterl,numberl)))
+				numberl=Element("numberl") -->
+				<!-- set_ships_player(Schiff(Coordinate(letterf,numberf),Coordinate(letterl,numberl))) -->
 
 
 
@@ -103,14 +104,14 @@
 	</div>
 	<div class="button_reset">
 		<py-script id="button_reset">
-			from main import *
+			<!-- from main import *
 			from globes import *
 			pc_board=create_board(PLAYINGBOARDSIZE)
 			player_board=create_board(PLAYINGBOARDSIZE)
 			player_hit=[]
 			player_miss=[]
 			pc_miss=[]
-			pc_hit=[]
+			pc_hit=[] -->
 
 
 
@@ -118,7 +119,7 @@
 </div>
 <div class="button_newggame">
 	<py-script id="button_newgame">
-		from main import *
+		<!-- from main import *
 		from globes import *
 		pc_board=create_board(PLAYINGBOARDSIZE)
 		player_board=create_board(PLAYINGBOARDSIZE)
@@ -129,12 +130,12 @@
 		len1=Element("len1")
 		len2=Element("len2")
 		len3=Element("len3")
-		len4=Element("len4")
+		len4=Element("len4") -->
 
-		set_ships_pc(len1,1)
+		<!-- set_ships_pc(len1,1)
 		set_ships_pc(len2,2)
 		set_ships_pc(len3,3)
-		set_ships_pc(len4,4)
+		set_ships_pc(len4,4) -->
 
 
 

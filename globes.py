@@ -43,9 +43,3 @@ player_board = create_board(PLAYINGBOARDSIZE)
 pc_hit: list = []
 pc_miss: list = []
 pc_board = create_board(PLAYINGBOARDSIZE)
-
-
-# from schiff import playing_board_player
-def table(tabelle):
-
-    print(tabulate(tabelle, tablefmt="html"))
