@@ -18,7 +18,8 @@ def create_board(groesse):
     brd = {}
     for i in range(groesse):
         for j in range(groesse):
-            brd[(num_to_letter(i), j)] = False
+            brd[Coordinate(num_to_letter(i), j)] = False
+    # print(brd)
     return brd
 
 

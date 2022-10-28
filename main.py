@@ -1,6 +1,7 @@
-"""shoot.py"""
+"""main.py"""
 
 import random
+from operator import le
 from time import sleep
 
 from globes import (
@@ -15,6 +16,7 @@ from globes import (
     player_board,
     player_hit,
     player_miss,
+    tabulate
 )
 
 
@@ -24,8 +26,10 @@ def place_ship(new_ship: Schiff, board: dict):
     # set's horizontal ship
     if new_ship.first.HOR == new_ship.last.HOR:
         line = new_ship.first.HOR
-        stard = new_ship.first.VERT
-        end = new_ship.last.VERT
+        stard: int = new_ship.first.VERT
+        end: int = new_ship.last.VERT
+        stard=int(stard)
+        end=int(end)
         leng = end - stard
         cut = 1
 
@@ -74,6 +78,7 @@ def letter_to_num(letters: str):
     """converts letter strings to numbers"""
     i = 0
     numb = 0
+    letters=str(letters)
     for letter in reversed(letters):
         numb += (ord(letter) - 64) * 26**i
         i += 1
@@ -94,7 +99,7 @@ def ignore_num(zkette: str):
 
 
 def ignore_float(numb: float):
-    """useless"""
+    """useless_amogus"""
     return int(numb)
 
 
@@ -105,17 +110,17 @@ def get_random_field():
     return field
 
 
-def pc_shoot(dic: dict, count: int):
+def pc_shoot(count: int):
     """function to shoot a boat"""
     # empty list to store already shot field
     already_shot: list = []
     field = get_random_field()
 
     if field in already_shot:
-        pc_shoot(dic, count)
+        pc_shoot(count)
     # check if ship is on field and shoot it
-    if dic.get(field):
-        hit = dic[field] = False
+    if player_board.get(field):
+        hit = player_board[field] = False
         count += 1
         pc_hit.append(field)
         return hit, count
@@ -124,7 +129,7 @@ def pc_shoot(dic: dict, count: int):
 
 
 def player_shoot(field: Coordinate, dic: dict, count: int):
-    """lhfslhk"""
+    """shoot"""
     # check if ship is on field and shoot it
     if dic.get(field):
         hit = dic[field] = False
@@ -136,58 +141,71 @@ def player_shoot(field: Coordinate, dic: dict, count: int):
 
 
 def set_ships_pc(frequency: int, lenght: int):
+    """ships"""
     while frequency != 0:
         start_point = get_random_field()
-        get_direction = random.choice(start_point)
+        get_direction = random.choice([start_point.HOR, start_point.VERT])
 
         # vertical
-        if get_direction == start_point[0]:
+        if get_direction == start_point.HOR:
             if lenght == 1:
                 end_point = get_direction
-                last_block = Coordinate(get_direction, start_point[0])
-                print(start_point, last_block)
-                place_ship(Schiff(start_point, last_block), pc_board)
+                last_block = Coordinate(get_direction, start_point.VERT)
+                kuhl=place_ship(Schiff(start_point, last_block), pc_board)
             else:
                 end_point = letter_to_num(get_direction) + lenght
                 end_point = num_to_letter(end_point)
                 if end_point < PLAYINGBOARDSIZE:
-                    last_block = Coordinate(end_point, start_point[0])
-                    place_ship(Schiff(start_point, end_point), pc_board)
-                    frequency -= 1
+                    last_block = Coordinate(end_point, start_point.VERT)
+                    kuhl=place_ship(Schiff(start_point, end_point), pc_board)
 
         # horizontal
-        elif get_direction == start_point[1]:
+        elif get_direction == start_point.VERT:
             if lenght == 1:
                 end_point = get_direction
-                last_block = Coordinate(get_direction, start_point[1])
-                print(start_point, last_block)
-                place_ship(Schiff(start_point, last_block), pc_board)
+                last_block = Coordinate(get_direction, start_point.VERT)
+                kuhl=place_ship(Schiff(start_point, last_block), pc_board)
             else:
                 end_point = get_direction + lenght
                 if end_point < PLAYINGBOARDSIZE:
-                    last_block = Coordinate(get_direction, start_point[1])
-                    place_ship(Schiff(start_point, end_point), pc_board)
-                    frequency -= 1
+                    last_block = Coordinate(get_direction, start_point.VERT)
+                    kuhl=place_ship(Schiff(start_point, last_block), pc_board)
+        if not kuhl:
+            frequency += 1
+        frequency -= 1
 
 
 def set_ships_player(ship: Schiff):
     place_ship(ship, player_board)
 
+def reset(lis: list):
+    lis.clear()
 
-def player_move(target: Coordinate, count: int):
-    temp_board = create_board(PLAYINGBOARDSIZE)
-    while pc_board != temp_board:
-        player_shoot(target, pc_board, count)
-    return True
+def table(tabelle):
+    return tabulate(tabelle, tablefmt="html")
+def output_field():
+    spalten=[]
+    zeilen=[]
+    for j in range(PLAYINGBOARDSIZE+1):
+        spalten.clear()
+        if j:
+            for i in range(PLAYINGBOARDSIZE+2):
+                if i:
+                    if player_board.get((num_to_letter(j),i)):
+                        spalten.append("🛥")
+                    else:
+                        spalten.append(" ")
+                else:
+                    spalten.append(j-1)
+        else:
+            for i in range(PLAYINGBOARDSIZE+2):
+                if i:
+                    spalten.append(num_to_letter(i-1))
+                else:
+                    spalten.append(" ")
+        zeilen.append(spalten[0:-1])
+    return table(zeilen[0:-1])
 
 
-def pc_move(count: int):
-    temp_board = create_board(PLAYINGBOARDSIZE)
-    while player_board != temp_board:
-        pc_shoot(player_board, count)
-        # wait for player move
-        while not player_move:
-            sleep(1)
 
 
-set_ships_pc(2, 1)

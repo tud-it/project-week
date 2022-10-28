@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="style.css">
+	<!-- <link rel="stylesheet" href="style.css"> -->
 	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 	<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 	<title>Battleships</title>
@@ -26,80 +26,62 @@
 			<div class="playerships">
         <py-script id="playerships">
           	from globes import*
-						spalten=[]
-						zeilen=[]
-						player_board[("C",4)]=True
-						for j in range(PLAYINGBOARDSIZE+1):
-							spalten.clear()
-							if j:
-								for i in range(PLAYINGBOARDSIZE+2):
-									if i:
-										if player_board.get((num_to_letter(j),i)):
-											spalten.append("🛥")
-										else:
-											spalten.append(" ")
-									else:
-										spalten.append(j-1)
-							else:
-								for i in range(PLAYINGBOARDSIZE+2):
-									if i:
-										spalten.append(num_to_letter(i-1))
-									else:
-										spalten.append(" ")
-							zeilen.append(spalten[0:-1])
-						def table(tabelle):
-							return tabulate(tabelle, tablefmt="html")
-						pyscript.write("playerships",table(zeilen))
-
+						from main import *
+						pyscript.write("playerships",output_field())
         </py-script>
     	</div>
-    	<div class="hitmiss1">
-    	    <py-script id="hitmiss">
-							from globes import*
-							spalten=[]
-							zeilen=[]
-							hit_miss=create_board(PLAYINGBOARDSIZE)
-							for element in player_hit:
-								hit_miss[element]="hit"
-							for element in player_miss:
-								hit_miss[element]="miss"
-							for j in range(PLAYINGBOARDSIZE+1):
-								spalten.clear()
-								for i in range(PLAYINGBOARDSIZE+2):
-									if hit_miss.get((num_to_letter(j+1),i+1))=="hit":
-										spalten.append("❌")
-									elif hit_miss.get((num_to_letter(j+1),i+1))=="miss":
-										spalten.append("⭕️")
-									else:
-										spalten.append(" ")
-								zeilen.append(spalten[0:-1])
-							def table(tabelle):
-								print(tabulate(tabelle, tablefmt="html"))
-							pyscript.write("hittmiss1",table(zeilen))
+			<div class="hitmiss1">
+        <!-- <py-script id="hitmiss1">
+					from globes import*
+					spalten=[]
+					zeilen=[]
+					hit_miss=create_board(PLAYINGBOARDSIZE)
+					player_hit.append(("C",4))
+					for element in player_hit:
+						hit_miss[element]="hit"
+					for element in player_miss:
+						hit_miss[element]="miss"
+					for j in range(PLAYINGBOARDSIZE+1):
+						spalten.clear()
+						for i in range(PLAYINGBOARDSIZE+2):
+							if hit_miss.get((num_to_letter(j+1),i+1))=="hit":
+								spalten.append("❌")
+							elif hit_miss.get((num_to_letter(j+1),i+1))=="miss":
+								spalten.append("⭕️")
+							else:
+								spalten.append(" ")
+						zeilen.append(spalten[0:-1])
+					def table(tabelle):
+						print(tabulate(tabelle, tablefmt="html"))
+					print()
+					pyscript.write("hittmiss1",table(zeilen))
 
-					</py-script>
-			</div>
+        </py-script> -->
+    	</div>
 			<div class="button_shoot">
-				<py-script id="button_shoot">
-					<!-- from main import *
+				<!-- <py-script id="button_shoot">
+					from main import *
 					from globes import *
 					Letter=Element("letter")
 					number=Element("number")
-					player_move(Coordinate(Letter,number),1) -->
-
-
-
-				</py-script>
+					player_shoot(Coordinate(Letter,number),1)
+					pc_shoot(1)
+				</py-script> -->
 		</div>
 		<div class="button_place">
 			<py-script id="button_place">
-				<!-- from main import *
+				from main import *
 				from globes import *
-				letterf=Element("letterf")
-				numberf=Element("numberf")
-				letterl=Element("letterl")
-				numberl=Element("numberl") -->
-				<!-- set_ships_player(Schiff(Coordinate(letterf,numberf),Coordinate(letterl,numberl))) -->
+				from pyodide.ffi.wrappers import add_event_listener
+				def place():
+					letterf=Element("letterf")
+					numberf=Element("numberf")
+					letterl=Element("letterl")
+					numberl=Element("numberl")
+					set_ships_player(Schiff(Coordinate(letterf,numberf),Coordinate(letterl,numberl)))
+					pyscript.write("playerships",output_field())
+					add_event_listener(document.getElementById("two"), "click", say_goodbye)
+
 
 
 
@@ -107,22 +89,22 @@
 	</div>
 	<div class="button_reset">
 		<py-script id="button_reset">
-			<!-- from main import *
+			from main import *
 			from globes import *
 			pc_board=create_board(PLAYINGBOARDSIZE)
 			player_board=create_board(PLAYINGBOARDSIZE)
-			player_hit=[]
-			player_miss=[]
-			pc_miss=[]
-			pc_hit=[] -->
+			reset(pc_hit)
+			reset(pc_miss)
+			reset(player_hit)
+			reset(player_miss)
 
 
 
 		</py-script>
 </div>
 <div class="button_newggame">
-	<py-script id="button_newgame">
-		<!-- from main import *
+	<!-- <py-script id="button_newgame">
+		from main import *
 		from globes import *
 		pc_board=create_board(PLAYINGBOARDSIZE)
 		player_board=create_board(PLAYINGBOARDSIZE)
@@ -133,16 +115,16 @@
 		len1=Element("len1")
 		len2=Element("len2")
 		len3=Element("len3")
-		len4=Element("len4") -->
+		len4=Element("len4")
 
-		<!-- set_ships_pc(len1,1)
+		set_ships_pc(len1,1)
 		set_ships_pc(len2,2)
 		set_ships_pc(len3,3)
-		set_ships_pc(len4,4) -->
+		set_ships_pc(len4,4)
 
 
 
-	</py-script>
+	</py-script> -->
 </div>
 		</div>
 
@@ -201,7 +183,7 @@
 									<input type="number" placeholder="Type a Number">
 								</div>
 								<div class="wrap place_btn">
-									<button class="button_place btn btn-primary btn-round">Place</button>
+									<button class="button_place btn btn-primary btn-round" pys-onClick="place" id="place">Place</button>
 								</div>
 							</div>
 							<div class="heading">
