@@ -17,7 +17,6 @@ from globes import (
     player_miss,
 )
 
-
 def place_ship(new_ship: Schiff, board: dict):
     """places ship"""
 
