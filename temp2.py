@@ -3,7 +3,7 @@ from globes import (
   PLAYINGBOARDSIZE,
   create_board,
   player_hit,
-  player_miss,
+  player_miss,	
   num_to_letter
 )
 

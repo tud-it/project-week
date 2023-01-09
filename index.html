@@ -9,23 +9,21 @@
 	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 	<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 	<title>Battleships</title>
-	<!-- <script>
-	<py-env>
-		- tabulate
-		paths:
-		- ./globes.py
-	</py-env>
-	</script> -->
-</head>
-
-<body>
 	<py-config>
 		packages = [
 		 "tabulate",
-		]
-		[[fetch]]
+		 ]
+		 [[fetch]]
             files = ["./globes.py"]
 		</py-config>
+		<!-- <py-env>
+		- tabulate
+		paths:
+		- ./globes.py
+		</py-env> -->
+</head>
+
+<body>
 	<h1><u>Battleships</u></h1>
     <div class="board">
 			<div class="playerships">
@@ -120,3 +118,5 @@
 </body>
 
 </html>
+
+
