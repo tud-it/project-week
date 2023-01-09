@@ -1,4 +1,11 @@
-from globes import *
+from tabulate import tabulate
+from globes import (
+  PLAYINGBOARDSIZE,
+  create_board,
+  player_hit,
+  player_miss,
+  num_to_letter
+)
 
 spalten=[]
 zeilen=[]
