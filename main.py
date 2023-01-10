@@ -206,6 +206,3 @@ def output_field():
         zeilen.append(spalten[0:-1])
     return table(zeilen[0:-1])
 
-
-
-

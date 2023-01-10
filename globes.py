@@ -44,3 +44,4 @@ player_board = create_board(PLAYINGBOARDSIZE)
 pc_hit: list = []
 pc_miss: list = []
 pc_board = create_board(PLAYINGBOARDSIZE)
+
