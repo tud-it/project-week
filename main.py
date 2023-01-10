@@ -23,7 +23,7 @@ def place_ship(new_ship: Schiff, board: dict):
 
     # set's horizontal ship
     # FIXME: AttributeError: 'tuple' object has no attribute 'HOR'
-    print(new_ship.first + " " + new_ship.last)
+    print(new_ship.first, new_ship.last)
     if new_ship.first.HOR == new_ship.last.HOR:
         line = new_ship.first.HOR
         stard: int = new_ship.first.VERT
@@ -148,6 +148,7 @@ def set_ships_pc(frequency: int, lenght: int):
     """ships"""
     while frequency != 0:
         start_point = get_random_field()
+        print(start_point.HOR,start_point.VERT)
         get_direction = random.choice([start_point.HOR, start_point.VERT])
 
         # vertical
