@@ -1,26 +1,27 @@
 """shoot.py"""
 
 import random
-from time import sleep
 
 from globes import (
     PLAYINGBOARDSIZE,
     Coordinate,
-    Schiff,
+    Schiff,  # player_board,
     create_board,
     num_to_letter,
     pc_board,
     pc_hit,
     pc_miss,
-    player_board,
     player_hit,
     player_miss,
 )
+
 
 def place_ship(new_ship: Schiff, board: dict):
     """places ship"""
 
     # set's horizontal ship
+    # FIXME: AttributeError: 'tuple' object has no attribute 'HOR'
+    print(new_ship.first + " " + new_ship.last)
     if new_ship.first.HOR == new_ship.last.HOR:
         line = new_ship.first.HOR
         stard = new_ship.first.VERT
@@ -44,6 +45,7 @@ def place_ship(new_ship: Schiff, board: dict):
         return False
 
     # set's vertical ship
+    # FIXME: AttributeError: 'tuple' object has no attribute 'VERT'
     if new_ship.first.VERT == new_ship.last.VERT:
         spalte = new_ship.first.VERT
         stard = letter_to_num(new_ship.first.HOR)
@@ -122,14 +124,17 @@ def pc_shoot(dic: dict, count: int):
     return print("Nicht Getroffen!")
 
 
-def player_shoot(field: Coordinate, dic: dict, count: int):
+def player_shoot(
+    field: Coordinate,
+    dic: dict,
+):  # count: int):
     """lhfslhk"""
     # check if ship is on field and shoot it
     if dic.get(field):
         hit = dic[field] = False
-        count += 1
+        # count += 1
         player_hit.append(field)
-        return hit, count
+        return (hit,)  # count
     player_miss.append(field)
     return print("Nicht Getroffen!")
 
@@ -162,6 +167,24 @@ def set_ships_pc(frequency: int, lenght: int):
                     frequency -= 1
 
 
+def player_move(target: Coordinate):  # , count: int):
+    player_shoot(target, pc_board)  # , count)
+    return True
+
+
+# def pc_move(count: int):
+#     temp_board = create_board(PLAYINGBOARDSIZE)
+#     while player_board != temp_board:
+#         pc_shoot(player_board, count)
+#         # wait for player move
+#         while not player_move():
+#             sleep(1)
+
+
+def test():
+    print("es klappt")
+
+
 # def set_ships_player(ship: Schiff):
 #    while frequency != 0:
 #        start_point = input()
@@ -188,17 +211,3 @@ def set_ships_pc(frequency: int, lenght: int):
 #                if end_point < SPIELFELDGRÖSSE:
 #                    place_ship(Schiff(start_point, end_point), playing_board_pc)
 #                    frequency -= 1
-
-
-def player_move(target: Coordinate, count: int):
-    player_shoot(target, pc_board, count)
-    return True
-
-
-def pc_move(count: int):
-    temp_board = create_board(PLAYINGBOARDSIZE)
-    while player_board != temp_board:
-        pc_shoot(player_board, count)
-        # wait for player move
-        while not player_move:
-            sleep(1)
