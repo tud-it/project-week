@@ -9,199 +9,190 @@
 	<link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 	<script defer src="https://pyscript.net/latest/pyscript.js"></script>
 	<title>Battleships</title>
+	<py-config>
+		terminal = false
+		packages = [
+		"tabulate",
+		]
+		[[fetch]]
+		files = ["./globes.py", "./main.py"]
+	</py-config>
 </head>
 
 <body>
-
 	<h1><u>Battleships</u></h1>
+	<div class="board">
+		<div class="playerships">
+			<!-- FIXME: is not displayed (only in pyterminal but as a string and not as html)-->
+			<py-script id="playerships" src="./board1.py"></py-script>
+		</div>
+		<div class="hitmiss1">
+			<!-- FIXME: same as above -->
+			<py-script id="hitmiss" src="./board2.py"></py-script>
+		</div>
+		<py-script>
+			import js
+			from tabulate import tabulate
+			from globes import PLAYINGBOARDSIZE, num_to_letter, player_board
 
-    <py-env>
-        - tabulate
-    </py-env>
-    <py-config type="toml">
-        paths=["./globes.py","./main.py"]
-    </py-config>
-		<div id="playerships"></div>
-    <div class="board">
-			<div class="playerships">
-        <py-script id="playerships">
-          	from globes import*
-						from main import *
-						pyscript.write("playerships",output_field())
-        </py-script>
-    	</div>
-			<div class="hitmiss1">
-        <!-- <py-script id="hitmiss1">
-					from globes import*
-					spalten=[]
-					zeilen=[]
-					hit_miss=create_board(PLAYINGBOARDSIZE)
-					player_hit.append(("C",4))
-					for element in player_hit:
-						hit_miss[element]="hit"
-					for element in player_miss:
-						hit_miss[element]="miss"
-					for j in range(PLAYINGBOARDSIZE+1):
-						spalten.clear()
+			def play_ships():
+				spalten=[]
+				zeilen=[]
+				for j in range(PLAYINGBOARDSIZE+1):
+					spalten.clear()
+					if j:
 						for i in range(PLAYINGBOARDSIZE+2):
-							if hit_miss.get((num_to_letter(j+1),i+1))=="hit":
-								spalten.append("❌")
-							elif hit_miss.get((num_to_letter(j+1),i+1))=="miss":
-								spalten.append("⭕️")
+							if i:
+								if player_board.get((num_to_letter(j),i)):
+									spalten.append("🛥")
+								else:
+									spalten.append(" ")
+							else:
+								spalten.append(j-1)
+					else:
+						for i in range(PLAYINGBOARDSIZE+2):
+							if i:
+								spalten.append(num_to_letter(i-1))
 							else:
 								spalten.append(" ")
-						zeilen.append(spalten[0:-1])
-					def table(tabelle):
-						print(tabulate(tabelle, tablefmt="html"))
-					print()
-					pyscript.write("hittmiss1",table(zeilen))
+					zeilen.append(spalten[0:-1])
+				def table(tabelle):
+					return tabulate(tabelle, tablefmt="html")
+				print(table(zeilen))
 
-        </py-script> -->
-    	</div>
-			<div class="button_shoot">
-				<!-- <py-script id="button_shoot">
-					from main import *
-					from globes import *
-					Letter=Element("letter")
-					number=Element("number")
-					player_shoot(Coordinate(Letter,number),1)
-					pc_shoot(1)
-				</py-script> -->
-		</div>
-		<div class="button_place">
-			<py-script id="button_place">
-				from main import *
-				from globes import *
-				from pyodide.ffi.wrappers import add_event_listener
-				def place():
-					letterf=Element("letterf")
-					numberf=Element("numberf")
-					letterl=Element("letterl")
-					numberl=Element("numberl")
-					set_ships_player(Schiff(Coordinate(letterf,numberf),Coordinate(letterl,numberl)))
-					pyscript.write("playerships",output_field())
-					add_event_listener(document.getElementById("two"), "click", say_goodbye)
-
-
-
-
-			</py-script>
-	</div>
-	<div class="button_reset">
-		<py-script id="button_reset">
-			from main import *
-			from globes import *
-			pc_board=create_board(PLAYINGBOARDSIZE)
-			player_board=create_board(PLAYINGBOARDSIZE)
-			reset(pc_hit)
-			reset(pc_miss)
-			reset(player_hit)
-			reset(player_miss)
-
-
-
+			out = Element("playerships")
+			out.element.innerHTML = play_ships
 		</py-script>
-</div>
-<div class="button_newggame">
-	<!-- <py-script id="button_newgame">
-		from main import *
-		from globes import *
-		pc_board=create_board(PLAYINGBOARDSIZE)
-		player_board=create_board(PLAYINGBOARDSIZE)
-		player_hit=[]
-		player_miss=[]
-		pc_miss=[]
-		pc_hit=[]
-		len1=Element("len1")
-		len2=Element("len2")
-		len3=Element("len3")
-		len4=Element("len4")
+	</div>
 
-		set_ships_pc(len1,1)
-		set_ships_pc(len2,2)
-		set_ships_pc(len3,3)
-		set_ships_pc(len4,4)
-
-
-
-	</py-script> -->
-</div>
-		</div>
-
-		<div class="controls">
-			<div class="controls_content">
-				<div class="scores">
-					<div class="pc_score">
-						<label for="PC_Score">PC Score</label>
-						<output>60</output>
-					</div>
-					<div class="player_score">
-						<label for="Player_Score">Player Score</label>
-						<output>60</output>
-					</div>
+	<div class="controls">
+		<div class="controls_content">
+			<div class="scores">
+				<div class="pc_score">
+					<label for="PC_Score">PC Score:</label>
+					<output id="score_1">0</output>
 				</div>
-				<div class="settings">
-					<div class="mechanic">
-						<div class="set">
-							<div class="inp">
-								<div class="heading">
-									Menge:
-								</div>
-								<div class="len_1_c">
-									<label for="len_1" class="form__label">1 Block lang</label>
-									<input type="number" class="form__field" name="len_1" placeholder="Type a Number">
-								</div>
-								<div class="len_2_c">
-									<label for="len_2" class="form__label">2 Block lang</label>
-									<input type="number" class="form__field" name="len_2" placeholder="Type a Number">
-								</div>
-								<div class="len_3_c">
-									<label for="len_3" class="form__label">3 Block lang</label>
-									<input type="number" class="form__field" name="len_3" placeholder="Type a Number">
-								</div>
-								<div class="len_4_c">
-									<label for="len_4" class="form__label">4 Block lang</label>
-									<input type="number" class="form__field" name="len_4" placeholder="Type a Number">
-								</div>
+				<div class="player_score">
+					<label for="Player_Score">Player Score:</label>
+					<output id="score_2">0</output>
+				</div>
+			</div>
+			<div class="settings">
+				<div class="mechanic">
+					<div class="set">
+						<div class="inp">
+							<div class="heading">
+								Menge:
+							</div>
+							<div class="len_1_c">
+								<label for="len_1" class="form__label">1 Block lang</label>
+								<input type="number" class="form__field" id="laenge_1" name="len_1" placeholder="Type a Number">
+							</div>
+							<div class="len_2_c">
+								<label for="len_2" class="form__label">2 Block lang</label>
+								<input type="number" class="form__field" id="laenge_2" name="len_2" placeholder="Type a Number">
+							</div>
+							<div class="len_3_c">
+								<label for="len_3" class="form__label">3 Block lang</label>
+								<input type="number" class="form__field" id="laenge_3" name="len_3" placeholder="Type a Number">
+							</div>
+							<div class="len_4_c">
+								<label for="len_4" class="form__label">4 Block lang</label>
+								<input type="number" class="form__field" id="laenge_4" name="len_4" placeholder="Type a Number">
 							</div>
 						</div>
-						<div class="place">
-							<div class="heading">
-								Where to place ship:
-							</div>
-							<div class="start_end">
-								<div class="placeship_mechanic">
-									<div>
-										Start of the ship:
-									</div>
-									<input type="text" placeholder="Type a Letter">
-									<input type="number" placeholder="Type a Number">
-									<div>
-										End os the ship:
-									</div>
-									<input type="text" placeholder="Type a Letter">
-									<input type="number" placeholder="Type a Number">
+					</div>
+					<div class="place">
+						<div class="heading">
+							Where to place ship:
+						</div>
+						<div class="start_end">
+							<div class="placeship_mechanic">
+								<div>
+									Start of the ship:
 								</div>
-								<div class="wrap place_btn">
-									<button class="button_place btn btn-primary btn-round" pys-onClick="place" id="place">Place</button>
+								<input type="text" id="start_letter" placeholder="A">
+								<input type="number" id="start_number" placeholder="1">
+								<div>
+									End os the ship:
 								</div>
+								<input type="text" id="end_letter" placeholder="A">
+								<input type="number" id="end_number" placeholder="1">
 							</div>
-							<div class="heading">
-								Where to shoot:
-							</div>
-							<div class="shoot_mechanic">
-								<input type="text" placeholder="Type a Letter">
-								<input type="number" placeholder="Type a Number">
-								<div class="shooting">
-									<button class="btn btn-primary btn-round">shoot</button>
-								</div>
+							<div class="wrap place_btn">
+								<!-- [x]: place btn erstellen -->
+								<button id="place_ships" class="button_place btn btn-primary btn-round" type="submit"
+									py-click="ship_place()">Place</button>
+									<!-- [x]: TypeError: unsupported operand type(s) for -: 'str' and 'str' ==> siehe Zeile 19 in main.py -->
+								<py-script>
+									from main import place_ship
+									from globes import Schiff
+
+									def ship_place():
+										start_letter = Element("start_letter").value
+										start_number = Element("start_number").value
+										end_letter = Element("end_letter").value
+										end_number = Element("end_number").value
+										start_point = Coordinate (start_letter, start_number)
+										end_point = Coordinate(end_letter, end_number)
+										place_ship(Schiff(start_point, end_point), player_board)
+								</py-script>
 							</div>
 						</div>
+						<div class="heading">
+							Where to shoot:
+						</div>
+						<div class="shoot_mechanic">
+							<input type="text" id="shoot_letter" placeholder="C">
+							<input type="number" id="shoot_number" placeholder="4">
+							<div class="shooting">
+								<!-- [x]: shoot btn erstellen -->
+								<button id="shoot_ships" class="btn btn-primary btn-round" type="submit"
+									py-click="ship_shoot()">Shoot</button>
+								<py-script>
+									from main import player_shoot
+									from globes import Coordinate #, pc_count
+
+									def ship_shoot():
+										letter = Element("shoot_letter").value
+										number = Element("shoot_number").value
+										player_shoot(Coordinate(letter, number), player_board)
+										label_pc = Element("score_1")
+										label_player = Element("score_2")
+										# label_pc.innerHTML = pc_count
+										# label_player.innerHTML = player_count
+								</py-script>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="restart_mechanic">
-					<button class="button-42 button_newgame">New Game</button>
+					<!-- [x]: (Theoretisch)functions not working -->
+					<!-- soll mengen plazieren und alte wieder loeschen -->
+					<button id="new_game" class="button-42 button_newgame" type="submit" py-click="loop_fields()">New
+						Game</button>
+						<!-- ERROR: siehe main.py -->
+					<py-script>
+						from globes import PLAYINGBOARDSIZE, create_board
+						from main import set_ships_pc
+
+						def loop_fields():
+							create_board(PLAYINGBOARDSIZE)
+							for i in range (1,4):
+								var = Element("laenge_" + str(i))
+								val = var.value
+								set_ships_pc(val, i)
+					</py-script>
 					<br>
-					<button class="button-42 button_reset">Reset</button>
+					<!-- [x]: (Theoretisch) functions not working -->
+					<!-- soll altes Feld loeschen -->
+					<button id="reset_game" class="button-42 button_reset" type="submit" py-click="reset_fields()">Reset</button>
+					<py-script>
+						import globes
+
+						def reset_fields():
+							create_board(PLAYINGBOARDSIZE)
+					</py-script>
 				</div>
 			</div>
 		</div>

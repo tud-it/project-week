@@ -1,3 +1,5 @@
+"""Globals and classes"""
+
 from tabulate import tabulate
 
 
@@ -41,7 +43,9 @@ PLAYINGBOARDSIZE = 10
 player_hit: list = []
 player_miss: list = []
 player_board = create_board(PLAYINGBOARDSIZE)
+player_count = 0
 pc_hit: list = []
 pc_miss: list = []
 pc_board = create_board(PLAYINGBOARDSIZE)
+pc_count = 0
 
