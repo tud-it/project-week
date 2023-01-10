@@ -22,9 +22,44 @@
 <body>
 	<h1><u>Battleships</u></h1>
 	<div class="board">
-		<div class="playerships">
+		<div class="playerships" id="player_board">
 			<!-- FIXME: is not displayed (only in pyterminal but as a string and not as html)-->
-			<py-script id="playerships" src="./board1.py"></py-script>
+			<py-script id="playerships">
+
+				from tabulate import tabulate
+
+				from globes import PLAYINGBOARDSIZE, num_to_letter, player_board
+
+				spalten: list = []
+				zeilen: list = []
+				for j in range(PLAYINGBOARDSIZE + 1):
+				    spalten.clear()
+				    if j:
+				        for i in range(PLAYINGBOARDSIZE + 2):
+				            if i:
+				                if player_board.get((num_to_letter(j), i)):
+				                    spalten.append("🛥")
+				                else:
+				                    spalten.append(" ")
+				            else:
+				                spalten.append(j - 1)
+				    else:
+				        for i in range(PLAYINGBOARDSIZE + 2):
+				            if i:
+				                spalten.append(num_to_letter(i - 1))
+				            else:
+				                spalten.append(" ")
+				    zeilen.append(spalten[0:-1])
+
+
+				def table(tabelle):
+				    return tabulate(tabelle, tablefmt="html")
+
+
+				temp = Element("player_board")
+				temp.innerHTML = table(zeilen)
+
+			</py-script>
 		</div>
 		<div class="hitmiss1">
 			<!-- FIXME: same as above -->

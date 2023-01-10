@@ -4,8 +4,8 @@ from tabulate import tabulate
 
 from globes import PLAYINGBOARDSIZE, num_to_letter, player_board
 
-spalten = []  # type: list[str]
-zeilen = []
+spalten: list = []
+zeilen: list = []
 for j in range(PLAYINGBOARDSIZE + 1):
     spalten.clear()
     if j:

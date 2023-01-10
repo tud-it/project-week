@@ -2,10 +2,10 @@
 
 import random
 
+from globes import Schiff  # player_board,
 from globes import (
     PLAYINGBOARDSIZE,
     Coordinate,
-    Schiff,  # player_board,
     create_board,
     num_to_letter,
     pc_board,
@@ -20,8 +20,8 @@ def place_ship(new_ship: Schiff, board: dict):
     """places ship"""
 
     # set's horizontal ship
+    print(f"new_ship: {new_ship}, new_ship.first: {new_ship.first}")
     # FIXME: AttributeError: 'tuple' object has no attribute 'HOR'
-    print(new_ship.first + " " + new_ship.last)
     if new_ship.first.HOR == new_ship.last.HOR:
         line = new_ship.first.HOR
         stard = new_ship.first.VERT

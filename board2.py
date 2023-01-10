@@ -10,8 +10,8 @@ from globes import (
     player_miss,
 )
 
-spalten = []  # type: list[str]
-zeilen = []
+spalten: list = []
+zeilen: list = []
 hit_miss = create_board(PLAYINGBOARDSIZE)
 for element in player_hit:
     hit_miss[element] = "hit"
